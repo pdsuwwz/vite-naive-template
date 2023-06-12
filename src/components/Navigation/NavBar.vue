@@ -1,0 +1,69 @@
+<template>
+  <div>
+    <header
+      class="navigation-navbar-header-container navbar-shadow dark:dark-navbar-shadow"
+      :class="{
+        'fixed-header': fixed
+      }"
+    >
+      <div
+        class="navbar-header-box bg-#fff dark:bg-#1e1e20"
+      >
+        <slot></slot>
+        <div style="flex: 1;"></div>
+        <NavigationSideAction />
+        <NavigationAvatar />
+        <Translations dark />
+        <NavigationChangeTheme />
+      </div>
+    </header>
+  </div>
+</template>
+
+<script lang="ts">
+import Translations from '@/locales/Translations.vue'
+import NavigationSideAction from '@/components/Navigation/Side/SideAction.vue'
+import NavigationAvatar from '@/components/Navigation/Avatar.vue'
+import NavigationChangeTheme from '@/components/Navigation/ChangeTheme.vue'
+
+export default defineComponent({
+  name: 'NavigationNavBar',
+  components: {
+    Translations,
+    NavigationSideAction,
+    NavigationAvatar,
+    NavigationChangeTheme
+  },
+  props: {
+    fixed: {
+      type: Boolean,
+      default: true
+    }
+  }
+})
+</script>
+<style lang="scss" scoped>
+$headerHeight: 48px;
+
+.navigation-navbar-header-container {
+  height: $headerHeight;
+  line-height: $headerHeight;
+
+  &.fixed-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+  }
+
+  // box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+
+  .navbar-header-box {
+    display: flex;
+    height: 100%;
+    padding: 0 16px;
+  }
+}
+</style>
