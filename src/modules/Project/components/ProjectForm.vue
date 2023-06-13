@@ -8,7 +8,7 @@
     >
       <n-form-item
         path="name"
-        :label="_t('project.name')"
+        label="项目名称"
         :rule="getRequiredRules({
           trigger: 'change',
         })"
@@ -21,7 +21,7 @@
       </n-form-item>
       <n-form-item
         path="corpName"
-        :label="_t('project.companyName')"
+        label="公司名称"
         :rule="getRequiredRules({
           trigger: 'change',
         })"
@@ -34,7 +34,7 @@
       </n-form-item>
       <n-form-item
         path="notes"
-        :label="_t('project.remark')"
+        label="备注"
       >
         <n-input
           v-model:value="modelValue.notes"

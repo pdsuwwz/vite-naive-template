@@ -12,23 +12,21 @@
 </template>
 
 <script lang="ts">
-import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ProjectTableHeader',
   setup () {
-    const localeInject = useI18n()
 
     const list = computed(() => [
       {
-        name: localeInject.t('project.name')
+        name: '项目名称'
       },
       {
-        name: localeInject.t('project.createDate'),
+        name: '创建日期',
         width: '18%'
       },
       {
-        name: localeInject.t('project.state'),
+        name: '状态',
         width: '19%'
       }
     ])

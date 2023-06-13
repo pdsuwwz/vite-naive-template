@@ -1,26 +1,22 @@
-// import { CustomRouteItem } from '@/types'
 
 const importModule = import.meta.glob('../modules/**/*.vue')
 const Layout = () => import('@/components/Layout/index.vue')
 const LayoutView = () => import('@/components/Layout/LayoutView.vue')
 const LayoutArea = () => import('@/components/Layout/LayoutArea.vue')
 
-const childrenRoutes: Array<CustomRouteItem> = [
+const childrenRoutes: Array<RouteRecordRaw> = [
   {
-    path: 'test-layout',
-    title: 'TestLayout',
+    path: '/test-layout',
     name: '布局测试',
-    icon: 'el-icon-s-promotion',
     meta: {
       title: 'TestLayout'
     },
     component: LayoutArea
   },
   {
-    path: 'user',
+    path: '/user',
     component: Layout,
     name: 'User',
-    icon: 'eye',
     meta: {
       title: '账户'
     },
@@ -39,10 +35,9 @@ const childrenRoutes: Array<CustomRouteItem> = [
     ]
   },
   {
-    path: 'project',
+    path: '/project',
     component: Layout,
     name: 'Project',
-    icon: 'eye',
     redirect: {
       name: 'ProjectList'
     },
@@ -66,16 +61,15 @@ const childrenRoutes: Array<CustomRouteItem> = [
     ]
   },
   {
-    path: 'result',
+    path: '/result',
     redirect: {
       name: 'ProjectList'
     }
   },
   {
-    path: 'result/:projectId',
+    path: '/result/:projectId',
     component: LayoutView,
     name: 'result',
-    icon: 'eye',
     redirect: {
       name: 'ResultOverview'
     },
@@ -84,7 +78,6 @@ const childrenRoutes: Array<CustomRouteItem> = [
         path: 'overview',
         name: 'ResultOverview',
         component: importModule['../modules/Result/pages/overview.vue'],
-        icon: '',
         meta: {
           title: '总览'
         },
@@ -92,8 +85,6 @@ const childrenRoutes: Array<CustomRouteItem> = [
           {
             path: '',
             name: 'ResultOverview',
-            icon: '',
-            // la: '',
             component: importModule['../modules/Result/pages/overview.vue']
           }
         ]

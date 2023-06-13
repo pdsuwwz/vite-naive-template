@@ -51,15 +51,6 @@ export function getUserInfoData(params = {}) {
   }
 }
 
-// 切换后端语言
-export function updateChangeLanguage (data) {
-  return request({
-    url: '/acl/changelanguage',
-    method: 'post',
-    data
-  })
-}
-
 export function getDemoTestList (params) {
   return request({
     url: '/api/demo_test/list',

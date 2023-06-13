@@ -2,7 +2,6 @@ import 'virtual:uno.css'
 
 import { setupRouter } from '@/router'
 import { setupStore } from '@/store'
-import { setupI18n } from '@/locales'
 
 import App from '@/App.vue'
 
@@ -24,7 +23,6 @@ function setupPlugins() {
 
 async function setupApp() {
   setupStore(app)
-  await setupI18n(app)
   await setupRouter(app)
   app.mount('#app')
 }

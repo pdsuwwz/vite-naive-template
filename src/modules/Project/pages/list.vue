@@ -9,7 +9,7 @@
     </template>
 
     <template #side>
-      <LayoutSection :title="_t('project.manageTitle')">
+      <LayoutSection title="项目管理">
         <n-button
           type="primary"
           class="create-action"
@@ -20,7 +20,7 @@
               <CreateNewFolderOutlined />
             </n-icon>
           </template>
-          {{ _t('project.create') }}
+          创建项目
         </n-button>
       </LayoutSection>
     </template>
@@ -46,7 +46,6 @@
 </template>
 
 <script lang="ts">
-import { useI18n } from 'vue-i18n'
 
 import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 import NavigationNavBar from '@/components/Navigation/NavBar.vue'
@@ -73,7 +72,6 @@ export default defineComponent({
   setup () {
     const { proxy } = useCurrentInstance()
     const projectStore = useProjectStore()
-    const localeInject = useI18n()
 
     const testRef = ref()
 
@@ -87,7 +85,7 @@ export default defineComponent({
 
       await nextTick()
       const dd = window.$ModalDialog.create({
-        title: localeInject.t('project.create'),
+        title: '创建项目',
         style: {
           // top: '10vh',
           width: '50vw'
@@ -99,10 +97,10 @@ export default defineComponent({
           modelValue: formData,
           ref: testRef
         }),
-        positiveText: localeInject.t('project.confirmCreate'),
+        positiveText: '创建',
         async onPositiveClick () {
           const isValid = await testRef.value.validateRules()
-          if (!isValid) return Promise.reject(new Error('error'))
+          if (!isValid) return Promise.reject()
 
           dd.loading = true
           const { error, data } = await projectStore.createProject(formData)
@@ -110,7 +108,7 @@ export default defineComponent({
           dd.loading = false
 
           if (error) {
-            return Promise.reject(new Error('error'))
+            return Promise.reject()
           }
 
           projectStore.getProjectList()

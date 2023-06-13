@@ -14,7 +14,7 @@
           src="@/assets/images/project-empty.svg"
           alt="Empty"
         >
-        <span>{{ _t('base.empty') }}</span>
+        <span>无可用数据</span>
       </div>
     </div>
   </div>

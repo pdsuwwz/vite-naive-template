@@ -17,6 +17,9 @@ export default defineConfig({
     ],
     [
       'dark-navbar-shadow', { 'box-shadow': '0 1px 4px rgb(255 255 255 / 16%)' }
+    ],
+    [
+      'login-navbar-shadow', { 'box-shadow': '0 -3px 8px 3px #727272' }
     ]
   ]
 })
