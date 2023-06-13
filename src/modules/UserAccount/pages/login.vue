@@ -136,7 +136,6 @@ function onSubmit (refForm: FormInst) {
     }
 
     Cookie.set('token', data.user.token)
-    Cookie.set('name', data.user.username)
     router
       .replace(`/`)
       .then(() => {
