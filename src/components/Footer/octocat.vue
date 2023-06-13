@@ -23,7 +23,7 @@
 export default defineComponent({
   name: 'Octocat',
   setup() {
-    const link = ref('https://github.com/pdsuwwz/naive-ts-starter')
+    const link = ref('https://github.com/pdsuwwz/vite-naive-template')
     return {
       link
     }
