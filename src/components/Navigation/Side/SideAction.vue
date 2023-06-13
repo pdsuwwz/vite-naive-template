@@ -13,7 +13,6 @@
 </template>
 
 <script lang="ts">
-import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'NavigationSideAction',
@@ -22,13 +21,12 @@ export default defineComponent({
   ],
   setup () {
     const { proxy } = useCurrentInstance()
-    const localeInject = useI18n()
 
     function handleClick () {
       proxy.$emit('click')
     }
 
-    const title = computed(() => localeInject.t('base.systemTitle'))
+    const title = computed(() => 'NaiveUI Template 项目')
 
     return {
       title,

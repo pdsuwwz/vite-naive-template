@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import Cookie from 'js-cookie'
-import { useI18n } from 'vue-i18n'
 
 import { SignOut20Regular } from '@vicons/fluent'
 import { UserAvatar } from '@vicons/carbon'
@@ -30,7 +29,6 @@ export default defineComponent({
   setup () {
     const router = useRouter()
     const route = useRoute()
-    const localeInject = useI18n()
 
     const renderIcon = (icon: Component) => {
       return () => {
@@ -42,7 +40,7 @@ export default defineComponent({
 
     const commandList = computed<Array<DropdownOption>>(() => [
       {
-        label: localeInject.t('login.signout'),
+        label: '退出登录',
         key: '退出按钮',
         icon: renderIcon(SignOut20Regular),
         props: {

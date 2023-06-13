@@ -5,13 +5,10 @@ import { sleep } from '@/utils/request'
 import {
   login,
   logout,
-  getUserInfoData,
-  updateChangeLanguage
+  getUserInfoData
 } from '@/modules/UserAccount/api'
-import { changeLocale } from '@/locales/useLocale'
 
 export interface IUserAccountState {
-  locale: string
   demoList: any
   userInfo: any
 }
@@ -19,7 +16,6 @@ export interface IUserAccountState {
 export const useUserAccountStore = defineStore('UserAccount', {
   state: (): IUserAccountState => {
     return {
-      locale: 'en',
       demoList: {},
       userInfo: {}
     }
@@ -38,13 +34,6 @@ export const useUserAccountStore = defineStore('UserAccount', {
       }
       this.demoList = result
       return result
-    },
-    async updateChangeLanguage (params) {
-      const result = await updateChangeLanguage(params)
-      return this.filterResponse(result)
-    },
-    setLanguage (data) {
-      this.locale = data.locale
     },
     async login (data) {
       await sleep(1000)

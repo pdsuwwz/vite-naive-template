@@ -5,14 +5,14 @@
         :fixed="false"
       >
         <NavigationSideGoBack
-          :title="_t('base.goback')"
+          title="返回"
         />
       </NavigationNavBar>
     </template>
     <template #side>
       <LayoutSection
         has-divider
-        :title="_t('result.title')"
+        title="项目详情"
       >
         <ul>
           <li>111</li>

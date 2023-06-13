@@ -1,6 +1,6 @@
 <template>
   <router-link
-    :to="`${$route.params.locale ? '/' + $route.params.locale + '/' : '/'}result/${dataset.id}/overview`"
+    :to="`/result/${dataset.id}/overview`"
   >
     <ul class="project-item-container bg-#fff dark:bg-#3c3c3c">
       <li
@@ -68,7 +68,7 @@
           />
         </span>
         <span class="project-item-action__status">
-          {{ dataset.isPublished ? _t('project.stop') : _t('project.publish') }}
+          {{ dataset.isPublished ? '停止' : '发布' }}
         </span>
       </li>
     </ul>
@@ -81,7 +81,6 @@ import { PlayCircleOutlineOutlined, StopCircleOutlined } from '@vicons/material'
 
 import { sleep } from '@/utils/request'
 import { useMessage, useThemeVars } from 'naive-ui'
-import { useI18n } from 'vue-i18n'
 
 // TODO: Hide it temporarily
 // import ProjectModule from '@/modules/Project/store'
@@ -99,7 +98,6 @@ export default defineComponent({
     }
   } as const,
   setup (props) {
-    const localeInject = useI18n()
     const themeVars = useThemeVars()
 
     const { proxy } = useCurrentInstance()
@@ -134,11 +132,11 @@ export default defineComponent({
 
       if (props.dataset.isPublished) {
         message.info(
-          localeInject.t('project.publishingStop')
+          '停止发布'
         )
       } else {
         message.success(
-          localeInject.t('project.publishedSuccessfully')
+          '发布成功'
         )
       }
 

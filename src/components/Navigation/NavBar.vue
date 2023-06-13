@@ -1,27 +1,31 @@
 <template>
-  <div>
-    <header
-      class="navigation-navbar-header-container navbar-shadow dark:dark-navbar-shadow"
+  <header
+    class="navigation-navbar-header-container"
+    :class="{
+      'fixed-header': fixed,
+      'navbar-shadow dark:dark-navbar-shadow': auth,
+      'login-navbar-shadow dark:shadow-none': !auth,
+    }"
+  >
+    <div
+      class="navbar-header-box"
       :class="{
-        'fixed-header': fixed
+        'bg-#fff dark:bg-#1e1e20': auth,
+        'bg-#8d8b89 bg-opacity-30': !auth
       }"
     >
-      <div
-        class="navbar-header-box bg-#fff dark:bg-#1e1e20"
-      >
-        <slot></slot>
-        <div style="flex: 1;"></div>
+      <slot></slot>
+      <div style="flex: 1;"></div>
+      <template v-if="auth">
         <NavigationSideAction />
         <NavigationAvatar />
-        <Translations dark />
-        <NavigationChangeTheme />
-      </div>
-    </header>
-  </div>
+      </template>
+      <NavigationChangeTheme />
+    </div>
+  </header>
 </template>
 
 <script lang="ts">
-import Translations from '@/locales/Translations.vue'
 import NavigationSideAction from '@/components/Navigation/Side/SideAction.vue'
 import NavigationAvatar from '@/components/Navigation/Avatar.vue'
 import NavigationChangeTheme from '@/components/Navigation/ChangeTheme.vue'
@@ -29,12 +33,15 @@ import NavigationChangeTheme from '@/components/Navigation/ChangeTheme.vue'
 export default defineComponent({
   name: 'NavigationNavBar',
   components: {
-    Translations,
     NavigationSideAction,
     NavigationAvatar,
     NavigationChangeTheme
   },
   props: {
+    auth: {
+      type: Boolean,
+      default: true
+    },
     fixed: {
       type: Boolean,
       default: true

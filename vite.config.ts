@@ -14,7 +14,7 @@ const htmlPlugin = () => {
     transformIndexHtml (html) {
       return html.replace(
         /<title>(.*?)<\/title>/,
-        '<title>Naive TS Starter</title>'
+        '<title>Vite Naive Template</title>'
       )
     }
   }
@@ -136,10 +136,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         {
-          find: 'vue-i18n',
-          replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
-        },
-        {
           find: '@',
           replacement: path.resolve(__dirname, 'src')
         }
@@ -160,10 +156,6 @@ export default defineConfig(({ mode }) => {
       dir: '__tests__',
       environment: 'jsdom',
       alias: [
-        {
-          find: 'vue-i18n',
-          replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
-        },
         {
           find: '@',
           replacement: path.resolve(__dirname, 'src')

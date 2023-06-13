@@ -3,13 +3,10 @@
 // import {
 //   regexExtraSpace
 // } from '@/utils/regularExpression'
-import { i18n } from '@/locales'
-import { useLocale } from '@/locales/useLocale'
 import {
   regexEmail,
   regexExtraSpace
 } from '@/utils/regularExpression'
-import { useI18n } from 'vue-i18n'
 
 function validatorRules(
   validator?: any,
@@ -29,7 +26,7 @@ function validatorRules(
 function requiredRules (params = {}) {
   const { trigger, message } = Object.assign({}, {
     trigger: 'blur',
-    message: i18n.global.tm('base.pleaseInput')
+    message: '请输入'
   }, params)
 
   return validatorRules((rule: any, value: string) => {
@@ -48,7 +45,7 @@ function requiredRules (params = {}) {
 function requiredRadioRules (params = {}) {
   const { trigger, message } = Object.assign({}, {
     trigger: 'change',
-    message: i18n.global.tm('base.pleaseInput')
+    message: '请选择'
   }, params)
   return validatorRules((rule: any, value: string, callback: any) => {
     if (['boolean', 'number'].includes(typeof value)) {
@@ -73,10 +70,9 @@ function imageListRules (errMsg = '请上传全部图片') {
 }
 
 function requiredEmailRules (params = {}) {
-  const localeInject = useI18n()
   const { trigger, message } = Object.assign({}, {
     trigger: ['input', 'blur'],
-    message: localeInject.t('login.plsemail')
+    message: '请填写邮箱'
   }, params)
 
   return validatorRules((rule: any, value: string) => {
@@ -84,7 +80,7 @@ function requiredEmailRules (params = {}) {
     if (!value) {
       return new Error(message)
     } else if (!regexEmail.test(value)) {
-      return new Error(localeInject.t('login.plscurrentemail'))
+      return new Error('请输入正确的邮箱地址')
     }
     return true
   }, trigger)

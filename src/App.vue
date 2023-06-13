@@ -1,21 +1,20 @@
 <template>
-  <NThemeEditor>
-    <NConfigProvider
-      class="h-full"
-      :locale="currentLocale"
-      :theme="theme"
-      :theme-overrides="themeOverrides"
-    >
-      <NaiveProvider>
-        <RouterView />
-      </NaiveProvider>
-    </NConfigProvider>
-  </NThemeEditor>
+  <NConfigProvider
+    class="h-full"
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme="theme"
+    :theme-overrides="themeOverrides"
+  >
+    <NaiveProvider>
+      <RouterView />
+    </NaiveProvider>
+  </NConfigProvider>
 </template>
 
 <script lang="ts" setup>
 import NaiveProvider from './NaiveProvider.vue'
-import { changeLocale, useLocale } from '@/locales/useLocale'
+import { zhCN, dateZhCN } from 'naive-ui'
 
 const { theme, themeOverrides } = useTheme()
 
@@ -25,16 +24,6 @@ defineOptions({
 
 const route = useRoute()
 
-const currentLocale = useLocale()
-
-watch(
-  () => route.params,
-  () => {
-    if (route.name === '404') return
-
-    changeLocale(route.params.locale || 'en')
-  }
-)
 </script>
 
 <style lang="scss">

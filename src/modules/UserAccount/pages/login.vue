@@ -1,17 +1,11 @@
 <template>
-  <div class="user-account-login">
-    <div class="user-account-nav">
-      <div class="nav-left">
-        <div class="nav-logo"></div>
-        <div class="nav-circle"></div>
-        <div class="nav-title">
-          {{ _t('base.systemTitle') }}
-        </div>
-      </div>
-      <div class="nav-right">
-        <Translations />
-      </div>
-    </div>
+  <div class="user-account-login light:bg-[url(@/assets/images/logo-background.jpg)] dark:bg-#1e1e20 bg-no-repeat bg-cover">
+    <NavigationNavBar
+      :fixed="false"
+      :auth="false"
+    >
+      <NavigationSideLogo :auth="false" />
+    </NavigationNavBar>
     <div class="user-account-body">
       <UserAccountContainerLayout
         ref="refLogin"
@@ -34,11 +28,10 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 
 import UserAccountContainerLayout from '@/modules/UserAccount/components/ContainerLayout.vue'
-
-import Translations from '@/locales/Translations.vue'
+import NavigationNavBar from '@/components/Navigation/NavBar.vue'
+import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 
 import Cookie from 'js-cookie'
 import { useUserAccountStore } from '@/modules/UserAccount/store'
@@ -46,7 +39,6 @@ import { FormInst, useMessage } from 'naive-ui'
 
 import { User as IconUserFa } from '@vicons/carbon'
 import { Password as IconPasswordCarbon } from '@vicons/carbon'
-import { useChangeLang } from '@/locales/hooks/useChangeLang'
 
 defineOptions({
   name: 'UserAccountLogin'
@@ -68,11 +60,9 @@ const formData = reactive({
 
 const refLogin = ref()
 
-const localeInject = useI18n()
-
 const configLogin = computed(() => {
   return {
-    title: localeInject.t('login.hydl'),
+    title: '欢迎登录',
     actionList: [
       {
         attrs: {
@@ -81,7 +71,7 @@ const configLogin = computed(() => {
           loading: isLoading.value,
           size: 'large'
         },
-        text: localeInject.t('login.signin'),
+        text: '登录',
         on: {
           click (refForm: FormInst) {
             onSubmit(refForm)
@@ -97,10 +87,9 @@ const configLogin = computed(() => {
             return proxy.getRequiredEmailRules()
           }
         },
-        label: localeInject.t('login.email'),
+        label: '邮箱',
         prefixIcon: IconUserFa,
-        // placeholder: localeInject.t('login.plsemail'),
-        placeholder: 'vite.admin@gmail.com'
+        placeholder: '123456@admin.com'
       },
       {
         attrs: {
@@ -108,21 +97,20 @@ const configLogin = computed(() => {
           rule () {
             return proxy.getRequiredRules({
               trigger: ['input', 'blur'],
-              message: localeInject.t('login.plspwd')
+              message: '请填写密码'
             })
           }
         },
         link: {
-          text: localeInject.t('login.fgtpwd'),
+          text: '忘记密码？',
           click () {
-            console.log(proxy, localeInject.t('login.fgtpwd'))
+            console.log(proxy, '忘记密码？')
           }
         },
         type: 'password',
-        label: localeInject.t('login.pwd'),
+        label: '密码',
         prefixIcon: IconPasswordCarbon,
         showPasswordOn: 'click',
-        // placeholder: localeInject.t('login.plspwd'),
         placeholder: '123456'
       }
     ]
@@ -132,16 +120,6 @@ const configLogin = computed(() => {
 function setLoading (loading = false) {
   isLoading.value = loading
 }
-
-// 切换语言时被动触发表单校验
-const { removeEvent } = useChangeLang(
-  () => {
-    refLogin.value.refBoxForm.validate()
-  }
-)
-onUnmounted(() => {
-  removeEvent()
-})
 
 function onSubmit (refForm: FormInst) {
   if (isLoading.value) return
@@ -160,9 +138,9 @@ function onSubmit (refForm: FormInst) {
     Cookie.set('token', data.user.token)
     Cookie.set('name', data.user.username)
     router
-      .replace(`/${route.params.locale || ''}`)
+      .replace(`/`)
       .then(() => {
-        message.success(localeInject.t('login.logingSuccess'))
+        message.success('登录成功')
       })
       .catch(() => {})
   })
@@ -183,52 +161,13 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f0f2f5;
-  background-image: url("@/assets/images/logo-background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
 
   .user-account-nav {
-    display: flex;
-    justify-content: space-between;
-    color: #f0f2f5;
-    padding: 0 16px;
     box-shadow: 0 -3px 8px 3px #727272;
 
     // box-shadow: 0 1px 4px 3px rgb(0 21 41 / 8%);
 
     background-color: rgba(#8d8b89, 30%);
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      height: 48px;
-      align-items: center;
-    }
-
-    .nav-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 3px;
-      background-image: url("@/assets/images/naive-logo.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-    }
-
-    .nav-circle {
-      width: 6px;
-      height: 6px;
-      margin: 0 10px;
-      border-radius: 50%;
-      background: #f0f2f5;
-    }
-
-    .nav-title {
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 25px;
-    }
   }
 
   .user-account-body {
