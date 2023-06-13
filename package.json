@@ -1,5 +1,5 @@
 {
-  "name": "naive-ts-starter",
+  "name": "vite-naive-template",
   "description": "Template using Vite + Pinia + TypeScript + NaiveUI to fast build a prototyping",
   "version": "0.0.1",
   "author": "Wisdom <pdsu.wwz@foxmail.com>",
@@ -38,13 +38,13 @@
     "naive-ui",
     "admin-template"
   ],
-  "homepage": "https://github.com/pdsuwwz/naive-ts-starter",
+  "homepage": "https://github.com/pdsuwwz/vite-naive-template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pdsuwwz/naive-ts-starter"
+    "url": "git+https://github.com/pdsuwwz/vite-naive-template"
   },
   "bugs": {
-    "url": "https://github.com/pdsuwwz/naive-ts-starter/issues"
+    "url": "https://github.com/pdsuwwz/vite-naive-template/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.0",
