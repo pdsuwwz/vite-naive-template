@@ -306,6 +306,10 @@
     "useNotification": true,
     "themeOverridesDark": true,
     "themeOverridesLight": true,
-    "useTheme": true
+    "useTheme": true,
+    "ExtractDefaultPropTypes": true,
+    "ExtractPropTypes": true,
+    "ExtractPublicPropTypes": true,
+    "WritableComputedRef": true
   }
 }
