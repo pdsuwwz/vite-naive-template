@@ -28,6 +28,7 @@
     "vite",
     "jest",
     "vue3-jest",
+    "vitest",
     "typescript",
     "admin",
     "example",
