@@ -31,8 +31,8 @@
 
 ## Screenshot
 
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/19891724/154829635-46de24db-e4c5-409f-9fa5-6a9770ace166.png">
-<img width="1440" alt="image" src="https://user-images.githubusercontent.com/19891724/154829667-a84787b0-0104-4466-bb9e-9f586be66778.png">
+<img width="1388" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/51e67bf9-0983-4eb6-8514-294608f6276f">
+<img width="1385" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/98c63d22-dcf1-4f7b-ac04-ecccafbb0478">
 
 
 ## Environment Support
