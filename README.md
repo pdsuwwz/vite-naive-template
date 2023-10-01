@@ -1,9 +1,16 @@
 # vite-naive-template
 
-[![Deploy](https://github.com/pdsuwwz/vite-naive-template/workflows/gh-pages/badge.svg)](https://github.com/pdsuwwz/vite-naive-template/actions/workflows/deploy.yml)
+[![Deploy](https://img.shields.io/github/actions/workflow/status/pdsuwwz/vite-naive-template/deploy.yml
+)](https://github.com/pdsuwwz/vite-naive-template/actions/workflows/deploy.yml)
 [![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/pdsuwwz/vite-naive-template/deploy.yml?branch=main)](https://github.com/pdsuwwz/vite-naive-template/deployments/activity_log?environment=github-pages)
 [![thanks](https://badgen.net/badge/thanks/♥/pink)](https://github.com/pdsuwwz)
-[![License](https://img.shields.io/github/license/pdsuwwz/vite-naive-template?color=blue)](https://github.com/pdsuwwz/vite-naive-template/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/pdsuwwz/vite-naive-template?color=success)](https://github.com/pdsuwwz/vite-naive-template/blob/main/LICENSE)
+
+[![naive-ui](https://img.shields.io/github/package-json/dependency-version/pdsuwwz/vite-naive-template/naive-ui)](https://github.com/pdsuwwz/vite-naive-template)
+[![vue](https://img.shields.io/github/package-json/dependency-version/pdsuwwz/vite-naive-template/vue?color=ffd932)](https://github.com/pdsuwwz/vite-naive-template)
+[![vite](https://img.shields.io/github/package-json/dependency-version/pdsuwwz/vite-naive-template/dev/vite?color=ffd932)](https://github.com/pdsuwwz/vite-naive-template)
+
+
 
 🏄‍♂️ A Starter template built on Vite 4.x + Vue 3.3 + Naive UI + Pinia + UnoCSS + Unplugin Auto Import TypeScript.
 
