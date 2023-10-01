@@ -33,7 +33,7 @@
 * 内置 __ESlint__ 和 __Stylelint__, 可在此基础上扩充你想要的 Lint 配置规范
 * 内置封装了一个**可能比较好用的** Axios , 需要时配合 Pinia Actions 一起食用
 * 封装了 \<IconFont \/> 组件, 可直接使用 IconFont 图标
-* 内置全局 **window.$ModalXxxx** 插件, 支持使用 service 式地动态调用此插件来显示任意组件
+* 内置全局 [**window.$ModalXxxx**](https://github.com/pdsuwwz/vite-naive-template/blob/main/src/NaiveProvider.vue#L4-L7) 插件, 支持使用 service 式地动态调用此插件来显示任意组件
 * 路由鉴权已帮你封装好，同时配合 Nprogress, 只需要修改 permission.ts 文件即可
 * 自带一个模块化的组件开发环境，可按照 modules 目录解耦页面组件、路由组件、样式等文件
 * 高度封装但不失灵活，内部抽象出了一个完整的业务流程供你参考，涉及三个核心页面：登录、列表和明细
