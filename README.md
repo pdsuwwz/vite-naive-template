@@ -12,6 +12,10 @@
 [🔥 Live Demo 在线体验](https://pdsuwwz.github.io/vite-naive-template)
 
 
+> 账号：`admin@test.com` (随意, 邮箱格式就行)
+> 
+> 密码：123456 (随意)
+
 ## 🎉 Features
 
 * 支持 __Vite 4 + Vue 3.3 + TypeScript__
