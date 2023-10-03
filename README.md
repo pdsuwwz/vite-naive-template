@@ -33,7 +33,7 @@
 * 内置 __ESlint__ 和 __Stylelint__, 可在此基础上扩充你想要的 Lint 配置规范
 * 内置封装了一个**可能比较好用的** Axios , 需要时配合 Pinia Actions 一起食用
 * 封装了 \<IconFont \/> 组件, 可直接使用 IconFont 图标
-* 内置全局 [**window.$ModalXxxx**](https://github.com/pdsuwwz/vite-naive-template/blob/main/src/NaiveProvider.vue#L4-L7) 插件, 支持使用 service 式地动态调用此插件来显示任意组件
+* 服务式 service 挂载全局对象 [**window.$ModalXxxx**](https://github.com/pdsuwwz/vite-naive-template/blob/main/src/NaiveProvider.vue#L4-L7) 插件, 更方便的插件调用方式
 * 路由鉴权已帮你封装好，同时配合 Nprogress, 只需要修改 permission.ts 文件即可
 * 自带一个模块化的组件开发环境，可按照 modules 目录解耦页面组件、路由组件、样式等文件
 * 高度封装但不失灵活，内部抽象出了一个完整的业务流程供你参考，涉及三个核心页面：登录、列表和明细
@@ -42,8 +42,8 @@
 
 ## Screenshot
 
-<img width="1388" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/51e67bf9-0983-4eb6-8514-294608f6276f">
-<img width="1385" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/98c63d22-dcf1-4f7b-ac04-ecccafbb0478">
+<img width="1412" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/34fd01eb-758f-43cc-b5c2-8ec77629e94c">
+<img width="1387" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/cdb35ee2-1943-4ab3-80ed-380d9cc60f51">
 
 
 ## Environment Support
