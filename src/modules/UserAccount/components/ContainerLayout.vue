@@ -1,5 +1,5 @@
 <template>
-  <div class="user-account-container-layout bg-#fff">
+  <div class="user-account-container-layout">
     <div class="form-title">
       <div class="form-title-icon">
         <IconFont
@@ -41,6 +41,7 @@
                   text
                   tag="a"
                   type="primary"
+                  tabindex="-1"
                   @click="handleClickLink(formItem.link)"
                 >
                   {{ formItem.link.text }}
@@ -208,11 +209,12 @@ defineExpose({
 <style lang="scss" scoped>
 .user-account-container-layout {
   width: 438px;
-  margin-right: 80px;
   padding: 50px 34px 60px;
   box-shadow: 3px 6px 12px 0 rgb(0 0 0 / 15%), 1px 4px 8px 0 rgb(0 0 0 / 15%);
   border-radius: 6px;
   user-select: none;
+
+  --at-apply: bg-#fff:98%;
 
   &:deep(){
 
@@ -231,10 +233,9 @@ defineExpose({
   }
 
   .form-title {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
     padding-bottom: 30px;
+
+    --at-apply: flex flex-wrap items-center justify-center;
 
     .form-title-icon {
       width: 32px;
