@@ -1,5 +1,14 @@
 <template>
-  <div class="user-account-login light:bg-[url(@/assets/images/logo-background.jpg)] dark:bg-#1e1e20 bg-no-repeat bg-cover">
+  <div
+    :class="[
+      'user-account-login',
+      'light:bg-[url(@/assets/images/logo-background.jpeg)]',
+      'dark:bg-[url(@/assets/images/dark-logo-background.jpeg)]',
+      'dark:bg-#1e1e20',
+      'bg-no-repeat',
+      'bg-cover'
+    ]"
+  >
     <NavigationNavBar
       :fixed="false"
       :auth="false"
@@ -173,7 +182,7 @@ onMounted(() => {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
   }
 }
 

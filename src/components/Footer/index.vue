@@ -50,6 +50,8 @@ export default defineComponent({
   margin: 0 auto;
   width: 100%;
 
+  --at-apply: flex justify-center;
+
   .container {
     padding: 14px 0;
 

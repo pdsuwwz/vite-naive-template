@@ -19,7 +19,7 @@
 [🔥 Live Demo 在线体验](https://pdsuwwz.github.io/vite-naive-template)
 
 
-> 账号：`admin@test.com` (随意, 邮箱格式就行)
+> 账号：`123456@admin.com` (随意邮箱)
 > 
 > 密码：123456 (随意)
 
