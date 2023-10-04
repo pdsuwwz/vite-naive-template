@@ -87,33 +87,7 @@
 
 import { omit } from 'lodash-es'
 import { isFunction } from '@/utils/type'
-import { FormInst, lightTheme } from 'naive-ui'
-
-const { theme, themeOverrides } = useTheme()
-
-type Attrs = {
-  path: string
-  rule: () => any
-}
-
-interface FormConfigOptions {
-  attrs: Attrs
-  link?: any
-  type?: string
-  label: string
-  prefixIcon?: Component
-  showPasswordOn?: string
-  placeholder: string
-}
-
-type ActionOnEvent = {
-  click: (...args: any[]) => any
-}
-interface ActionOptions {
-  attrs: any
-  text: string
-  on: ActionOnEvent
-}
+import { FormInst, lightTheme, type InputProps } from 'naive-ui'
 
 defineOptions({
   name: 'UserAccountContainerLayout'
@@ -134,7 +108,7 @@ const props = defineProps({
     default: ''
   },
   actionList: {
-    type: Array as PropType<Array<ActionOptions>>,
+    type: Array as PropType<Array<FormContainer.ActionOptions>>,
     default () {
       return []
     },
@@ -148,7 +122,7 @@ const props = defineProps({
     required: true
   },
   formConfig: {
-    type: Array as PropType<Array<FormConfigOptions>>,
+    type: Array as PropType<Array<FormContainer.FormConfigOptions & InputProps>>,
     default () {
       return []
     },
@@ -163,10 +137,10 @@ const emits = defineEmits([
 const { proxy } = useCurrentInstance()
 const boxForm = ref<FormInst | null>(null)
 
-function getInputItemAttrs (formItem: any) {
-
+function getInputItemAttrs (formItem: InputProps) {
   return {
     // clearable: true,
+    autofocus: formItem.autofocus,
     placeholder: formItem.placeholder,
     type: formItem.type,
     showPasswordOn: formItem.showPasswordOn

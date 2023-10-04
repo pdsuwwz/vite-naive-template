@@ -44,7 +44,7 @@ import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 
 import Cookie from 'js-cookie'
 import { useUserAccountStore } from '@/modules/UserAccount/store'
-import { FormInst, useMessage } from 'naive-ui'
+import { FormInst, type InputProps, useMessage } from 'naive-ui'
 
 import { User as IconUserFa } from '@vicons/carbon'
 import { Password as IconPasswordCarbon } from '@vicons/carbon'
@@ -87,7 +87,7 @@ const configLogin = computed(() => {
           }
         }
       }
-    ],
+    ] as Array<FormContainer.ActionOptions>,
     formConfig: [
       {
         attrs: {
@@ -97,6 +97,7 @@ const configLogin = computed(() => {
           }
         },
         label: '邮箱',
+        autofocus: true,
         prefixIcon: IconUserFa,
         placeholder: '123456@admin.com'
       },
@@ -122,7 +123,7 @@ const configLogin = computed(() => {
         showPasswordOn: 'click',
         placeholder: '123456'
       }
-    ]
+    ] as Array<FormContainer.FormConfigOptions & InputProps>
   }
 })
 
@@ -148,7 +149,7 @@ function onSubmit (refForm: FormInst) {
     router
       .replace(`/`)
       .then(() => {
-        message.success('登录成功')
+        window.$ModalMessage.success('登录成功')
       })
       .catch(() => {})
   })

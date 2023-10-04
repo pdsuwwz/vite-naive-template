@@ -131,11 +131,11 @@ export default defineComponent({
       // if (error) return
 
       if (props.dataset.isPublished) {
-        message.info(
+        window.$ModalMessage.info(
           '停止发布'
         )
       } else {
-        message.success(
+        window.$ModalMessage.success(
           '发布成功'
         )
       }
