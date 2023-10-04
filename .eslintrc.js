@@ -26,7 +26,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-unused-vars': 1,
-    'no-undef': 1,
+    'no-undef': 'off',
     // https://eslint.org/docs/rules/no-var
     'no-var': 'error',
     // https://cn.eslint.org/docs/rules/no-trailing-spaces
@@ -38,7 +38,7 @@ module.exports = {
     'no-multiple-empty-lines': [
       2,
       {
-        max: 1
+        max: 3
       }
     ],
     // https://cn.eslint.org/docs/rules/eol-last

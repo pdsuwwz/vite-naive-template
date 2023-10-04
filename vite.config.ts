@@ -25,6 +25,9 @@ export default defineConfig(({ mode }) => {
     base: process.env.VITE_ROUTER_MODE === 'hash'
       ? ''
       : '/',
+    server: {
+      port: 4567
+    },
     plugins: [
       UnoCSS(),
       vue(),
