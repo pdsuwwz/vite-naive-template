@@ -4,7 +4,7 @@ export const projectDetail = {
   corpName: '测试公司',
   notes: '备注',
   isPublished: false,
-  createTime: '2021.01.29'
+  createTime: '2023-10-01'
 }
 
 export const projectList = [
@@ -14,7 +14,7 @@ export const projectList = [
     corpName: '测试公司',
     notes: '备注备注',
     isPublished: false,
-    createTime: '2021.01.29'
+    createTime: '2023-10-01'
   },
   {
     id: '222',
