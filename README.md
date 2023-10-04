@@ -23,6 +23,14 @@
 > 
 > 密码：123456 (随意)
 
+## 🪄 使用不同的 UI 库
+
+如果更喜欢使用 [Element Plus 2](https://element-plus.org) 作为 UI 库, 这里也为你提供了一个相应的模板项目：
+
+- ⚡️ [Element Plus 2 版本](https://github.com/pdsuwwz/vue-boilerplate-i18n)
+
+
+
 ## 🎉 Features
 
 * 支持 __Vite 4 + Vue 3.3 + TypeScript__
