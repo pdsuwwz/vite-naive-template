@@ -2,8 +2,8 @@
   <div
     :class="[
       'user-account-login',
-      'light:bg-[url(@/assets/images/logo-background.jpeg)]',
-      'dark:bg-[url(@/assets/images/dark-logo-background.jpeg)]',
+      'light:bg-[url(@/assets/images/login-background.jpeg)]',
+      'dark:bg-[url(@/assets/images/dark-login-background.jpeg)]',
       'dark:bg-#1e1e20',
       'bg-no-repeat',
       'bg-cover'
