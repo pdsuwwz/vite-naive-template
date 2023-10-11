@@ -310,6 +310,8 @@
     "ExtractDefaultPropTypes": true,
     "ExtractPropTypes": true,
     "ExtractPublicPropTypes": true,
-    "WritableComputedRef": true
+    "WritableComputedRef": true,
+    "injectLocal": true,
+    "provideLocal": true
   }
 }
