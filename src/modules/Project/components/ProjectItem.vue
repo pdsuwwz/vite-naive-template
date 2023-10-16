@@ -75,82 +75,82 @@
   </router-link>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 
 import { PlayCircleOutlineOutlined, StopCircleOutlined } from '@vicons/material'
 
 import { sleep } from '@/utils/request'
 import { useMessage, useThemeVars } from 'naive-ui'
+import { type ProjectDetailProps } from '@/modules/Project/store'
 
 // TODO: Hide it temporarily
 // import ProjectModule from '@/modules/Project/store'
 
-export default defineComponent({
-  name: 'ProjectItem',
-  components: {
-  },
-  props: {
-    dataset: {
-      type: Object,
-      default () {
-        return {}
+defineOptions({
+  name: 'ProjectItem'
+})
+
+const props = defineProps({
+  dataset: {
+    type: Object as PropType<ProjectDetailProps>,
+    default () {
+      return {
+        corpName: '',
+        createTime: '',
+        id: '',
+        isPublished: false,
+        name: '',
+        notes: ''
       }
-    }
-  } as const,
-  setup (props) {
-    const themeVars = useThemeVars()
-
-    const { proxy } = useCurrentInstance()
-    const isLoading = ref(false)
-    const getActionIcon = computed(() => {
-      return props.dataset.isPublished
-        ? StopCircleOutlined
-        : PlayCircleOutlineOutlined
-    })
-
-    const message = useMessage()
-
-    async function handlePublish (projectId) {
-      if (isLoading.value) return
-
-      isLoading.value = true
-
-      await sleep(1000)
-
-      // TODO: Hide it temporarily
-      // const { error } = await this.$store.dispatch(
-      //   ProjectModule.getAction('updateTogglePublishStatus'),
-      //   {
-      //     projectId
-      //   }
-      // )
-
-      isLoading.value = false
-
-      // TODO: Hide it temporarily
-      // if (error) return
-
-      if (props.dataset.isPublished) {
-        window.$ModalMessage.info(
-          '停止发布'
-        )
-      } else {
-        window.$ModalMessage.success(
-          '发布成功'
-        )
-      }
-
-      props.dataset.isPublished = !props.dataset.isPublished
-    }
-    return {
-      themeVars,
-      isLoading,
-      getActionIcon,
-
-      handlePublish
     }
   }
 })
+
+const themeVars = useThemeVars()
+
+const { proxy } = useCurrentInstance()
+const isLoading = ref(false)
+const getActionIcon = computed(() => {
+  return props.dataset.isPublished
+    ? StopCircleOutlined
+    : PlayCircleOutlineOutlined
+})
+
+const message = useMessage()
+
+async function handlePublish (projectId) {
+  if (isLoading.value) return
+
+  isLoading.value = true
+
+  await sleep(1000)
+
+  // TODO: Hide it temporarily
+  // const { error } = await this.$store.dispatch(
+  //   ProjectModule.getAction('updateTogglePublishStatus'),
+  //   {
+  //     projectId
+  //   }
+  // )
+
+  isLoading.value = false
+
+  // TODO: Hide it temporarily
+  // if (error) return
+
+  if (props.dataset.isPublished) {
+    window.$ModalMessage.info(
+      '停止发布'
+    )
+  } else {
+    window.$ModalMessage.success(
+      '发布成功'
+    )
+  }
+
+  props.dataset.isPublished = !props.dataset.isPublished
+}
+
 </script>
 
 <style lang="scss" scoped>
