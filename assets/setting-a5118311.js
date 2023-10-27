@@ -1,0 +1,1 @@
+import{d as e,_ as t,b as s,o as n}from"./index-7fb201c6.js";const o=e({name:"UserAccountSetting"});const _={class:"wrap-user-setting"};function c(a,d,r,p,i,u){return n(),s("div",_," 账号设置 ")}const l=t(o,[["render",c],["__scopeId","data-v-67d4de27"]]);export{l as default};
