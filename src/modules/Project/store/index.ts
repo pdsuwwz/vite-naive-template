@@ -75,8 +75,9 @@ export const useProjectStore = defineStore('Project', {
       await sleep(1000)
       return this.filterResponse(res, () => {
         const date = new Date()
+        const [, id] = String(Math.random()).split('.')
         this.projectList.push({
-          id: Math.random(),
+          id,
           name: params.name,
           corpName: params.corpName,
           notes: params.notes,
@@ -85,7 +86,7 @@ export const useProjectStore = defineStore('Project', {
         })
       })
     },
-    async updateTogglePublishStatus ({ commit }, params) {
+    async updateTogglePublishStatus (params) {
       const res = await updateTogglePublishStatus(params)
       return this.filterResponse(res, null)
     }

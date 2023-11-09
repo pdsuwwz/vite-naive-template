@@ -36,8 +36,6 @@ declare module 'vue' {
     Octocat: typeof import('./src/components/Footer/octocat.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SearchCorporation: typeof import('./src/components/SearchSelect/SearchCorporation.vue')['default']
-    SearchSelect: typeof import('./src/components/SearchSelect/index.vue')['default']
     SideAction: typeof import('./src/components/Navigation/Side/SideAction.vue')['default']
     SideGoBack: typeof import('./src/components/Navigation/Side/SideGoBack.vue')['default']
     SideLogo: typeof import('./src/components/Navigation/Side/SideLogo.vue')['default']
