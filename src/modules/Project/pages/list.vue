@@ -111,6 +111,8 @@ export default defineComponent({
             return Promise.reject()
           }
 
+          console.log(data!.createTime)
+
           projectStore.getProjectList()
         }
       })

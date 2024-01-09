@@ -70,10 +70,10 @@ export const useProjectStore = defineStore('Project', {
       const res = {
         msg: 'ok',
         error: 0,
-        data: {}
+        data: {} as ProjectDetailProps
       }
       await sleep(1000)
-      return this.filterResponse(res, () => {
+      return this.filterResponse<ProjectDetailProps>(res, () => {
         const date = new Date()
         const [, id] = String(Math.random()).split('.')
         this.projectList.push({
