@@ -67,23 +67,24 @@ export const useProjectStore = defineStore('Project', {
     },
     async createProject (params) {
       // const res = await createProject(params)
+
+      const date = new Date()
+      const [, id] = String(Math.random()).split('.')
       const res = {
         msg: 'ok',
         error: 0,
-        data: {}
-      }
-      await sleep(1000)
-      return this.filterResponse(res, () => {
-        const date = new Date()
-        const [, id] = String(Math.random()).split('.')
-        this.projectList.push({
+        data: {
           id,
           name: params.name,
           corpName: params.corpName,
           notes: params.notes,
           isPublished: false,
           createTime: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-        })
+        }
+      }
+      await sleep(1000)
+      return this.filterResponse<ProjectDetailProps>(res, () => {
+        this.projectList.push(res.data)
       })
     },
     async updateTogglePublishStatus (params) {
