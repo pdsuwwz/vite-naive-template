@@ -5,7 +5,7 @@ import { setupStore } from '@/store'
 
 import App from '@/App.vue'
 
-import Fonts from '@/assets/fonts'
+import '@/assets/fonts'
 
 import GlobalComponents from '@/components'
 import Mixin from '@/mixins'
@@ -17,7 +17,6 @@ function setupPlugins() {
   app
     .use(GlobalComponents)
     .use(Plugins)
-    .use(Fonts)
     .mixin(Mixin)
 }
 

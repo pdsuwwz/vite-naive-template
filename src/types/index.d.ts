@@ -8,7 +8,6 @@ import {
   requiredEmailRules
 } from '@/utils/formRules'
 
-import router from '@/router'
 
 declare module 'vue' {
   export interface VNode {
@@ -49,7 +48,6 @@ declare module 'pinia' {
    */
   export interface PiniaCustomProperties {
     filterResponse: typeof getFilterResponse
-    router: typeof router
   }
 }
 

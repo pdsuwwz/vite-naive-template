@@ -3,6 +3,8 @@ import { defineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 
 import UnoCSS from 'unocss/vite'
+import UnpluginIcons from 'unplugin-icons/vite'
+import IconsResolver from 'unplugin-icons/resolver'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -40,6 +42,7 @@ export default defineConfig(({ mode }) => {
           'vue',
           'vue-router',
           '@vueuse/core',
+          'pinia',
           {
             'vue': [
               'createVNode',
@@ -108,8 +111,19 @@ export default defineConfig(({ mode }) => {
       }),
       Components({
         resolvers: [
+          IconsResolver({
+            prefix: 'AutoIcon'
+          }),
           NaiveUiResolver()
         ]
+      }),
+      // Auto use Iconify icon
+      UnpluginIcons({
+        autoInstall: true,
+        compiler: 'vue3',
+        scale: 1.2,
+        defaultStyle: '',
+        defaultClass: 'unplugin-icon'
       }),
       htmlPlugin()
     ],

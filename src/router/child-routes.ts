@@ -1,5 +1,5 @@
 
-const importModule = import.meta.glob('../modules/**/*.vue')
+// const importModule = import.meta.glob('../modules/**/*.vue')
 const Layout = () => import('@/components/Layout/index.vue')
 const LayoutView = () => import('@/components/Layout/LayoutView.vue')
 const LayoutArea = () => import('@/components/Layout/LayoutArea.vue')
@@ -27,7 +27,7 @@ const childrenRoutes: Array<RouteRecordRaw> = [
       {
         path: 'login',
         name: 'UserLogin',
-        component: importModule['../modules/UserAccount/pages/login.vue'],
+        component: () => import('@/modules/UserAccount/pages/login.vue'),
         meta: {
           title: '登录'
         }
@@ -48,12 +48,12 @@ const childrenRoutes: Array<RouteRecordRaw> = [
         meta: {
           title: '项目列表'
         },
-        component: importModule['../modules/Project/pages/list.vue']
+        component: () => import('@/modules/Project/pages/list.vue')
       },
       {
         path: 'list',
         name: 'ProjectList',
-        component: importModule['../modules/Project/pages/list.vue'],
+        component: () => import('@/modules/Project/pages/list.vue'),
         meta: {
           title: '项目管理'
         }
@@ -77,7 +77,7 @@ const childrenRoutes: Array<RouteRecordRaw> = [
       {
         path: 'overview',
         name: 'ResultOverview',
-        component: importModule['../modules/Result/pages/overview.vue'],
+        component: () => import('@/modules/Result/pages/overview.vue'),
         meta: {
           title: '总览'
         },
@@ -85,7 +85,7 @@ const childrenRoutes: Array<RouteRecordRaw> = [
           {
             path: '',
             name: 'ResultOverview',
-            component: importModule['../modules/Result/pages/overview.vue']
+            component: () => import('@/modules/Result/pages/overview.vue')
           }
         ]
       }

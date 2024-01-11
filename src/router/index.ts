@@ -17,5 +17,3 @@ export async function setupRouter(app: App) {
   await router.isReady()
 }
 
-export default router
-

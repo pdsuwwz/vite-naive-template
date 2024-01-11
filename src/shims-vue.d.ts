@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 type EmptyObject = Record<string, never>
 declare module '*.vue' {
   import { DefineComponent } from 'vue'

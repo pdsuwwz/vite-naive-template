@@ -2,11 +2,13 @@ import axios, { AxiosInstance } from 'axios'
 import Cookie from 'js-cookie'
 
 import { camelizeKeys, decamelizeKeys } from '@/utils/camelCase'
-import Router from '@/router'
+import { useOutsideRouter } from '@/store/hooks/useOutsideRouter'
+
 
 // redirect error
 function errorRedirect (url: string) {
-  Router.push(`/${url}`)
+  const { router } = useOutsideRouter()
+  router.push(url)
 }
 
 export interface RespData<T> {
@@ -85,10 +87,7 @@ service.interceptors.request.use(
       return request
     }
 
-    Object.defineProperty(request.headers, 'Authorization', {
-      enumerable: true,
-      value: token as string
-    })
+    request.headers.Authorization = token
 
     return request
   },
