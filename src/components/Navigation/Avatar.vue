@@ -8,7 +8,7 @@
         src="@/assets/images/navigation-avatar.webp"
       > -->
       <n-icon :size="24">
-        <UserAvatar />
+        <div class="i-carbon:user-avatar"></div>
       </n-icon>
     </div>
   </n-dropdown>
@@ -17,15 +17,10 @@
 <script lang="ts">
 import Cookie from 'js-cookie'
 
-import { SignOut20Regular } from '@vicons/fluent'
-import { UserAvatar } from '@vicons/carbon'
 import { DropdownOption, NIcon } from 'naive-ui'
 
 export default defineComponent({
   name: 'NavigationAvatar',
-  components: {
-    UserAvatar
-  },
   setup () {
     const router = useRouter()
     const route = useRoute()
@@ -42,7 +37,9 @@ export default defineComponent({
       {
         label: '退出登录',
         key: '退出按钮',
-        icon: renderIcon(SignOut20Regular),
+        icon: renderIcon(
+          h('div', { class: 'text-16px i-fluent:sign-out-20-regular' })
+        ),
         props: {
           onClick: () => {
             Cookie.remove('token')

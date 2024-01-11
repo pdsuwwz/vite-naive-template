@@ -77,7 +77,6 @@
 
 <script lang="ts" setup>
 
-import { PlayCircleOutlineOutlined, StopCircleOutlined } from '@vicons/material'
 
 import { sleep } from '@/utils/request'
 import { useMessage, useThemeVars } from 'naive-ui'
@@ -112,8 +111,8 @@ const { proxy } = useCurrentInstance()
 const isLoading = ref(false)
 const getActionIcon = computed(() => {
   return props.dataset.isPublished
-    ? StopCircleOutlined
-    : PlayCircleOutlineOutlined
+    ? h('div', { class: 'i-material-symbols:stop-circle-outline' })
+    : h('div', { class: 'i-material-symbols:play-circle-outline' })
 })
 
 const message = useMessage()

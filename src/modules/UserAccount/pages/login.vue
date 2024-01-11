@@ -46,9 +46,6 @@ import Cookie from 'js-cookie'
 import { useUserAccountStore } from '@/modules/UserAccount/store'
 import { FormInst, type InputProps, useMessage } from 'naive-ui'
 
-import { User as IconUserFa } from '@vicons/carbon'
-import { Password as IconPasswordCarbon } from '@vicons/carbon'
-
 defineOptions({
   name: 'UserAccountLogin'
 })
@@ -98,7 +95,7 @@ const configLogin = computed(() => {
         },
         label: '邮箱',
         autofocus: true,
-        prefixIcon: IconUserFa,
+        prefixIcon: h('div', { class: 'text-16px i-ic:baseline-mail-lock' }),
         placeholder: '123456@admin.com'
       },
       {
@@ -119,7 +116,7 @@ const configLogin = computed(() => {
         },
         type: 'password',
         label: '密码',
-        prefixIcon: IconPasswordCarbon,
+        prefixIcon: h('div', { class: 'text-16px i-carbon:password' }),
         showPasswordOn: 'click',
         placeholder: '123456'
       }
@@ -145,7 +142,7 @@ function onSubmit (refForm: FormInst) {
       return
     }
 
-    Cookie.set('token', data.user.token)
+    Cookie.set('token', data!.user.token)
     router
       .replace(`/`)
       .then(() => {

@@ -17,7 +17,7 @@
         >
           <template #icon>
             <n-icon>
-              <CreateNewFolderOutlined />
+              <div class="i-material-symbols:new-window-sharp"></div>
             </n-icon>
           </template>
           创建项目
@@ -58,7 +58,6 @@ import { sleep } from '@/utils/request'
 
 import { useProjectStore } from '@/modules/Project/store'
 
-import { CreateNewFolderOutlined } from '@vicons/material'
 
 export default defineComponent({
   name: 'ProjectList',
@@ -66,8 +65,7 @@ export default defineComponent({
     NavigationNavBar,
     NavigationSideLogo,
     ProjectTableHeader,
-    ProjectTableBody,
-    CreateNewFolderOutlined
+    ProjectTableBody
   },
   setup () {
     const { proxy } = useCurrentInstance()

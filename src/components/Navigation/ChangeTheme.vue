@@ -13,14 +13,14 @@
       @update:value="handleChange"
     >
       <template #checked-icon>
-        <n-icon
-          :component="DarkModeOutlined"
-        />
+        <n-icon>
+          <div class="i-tdesign:mode-dark"></div>
+        </n-icon>
       </template>
       <template #unchecked-icon>
-        <n-icon
-          :component="LightModeOutlined"
-        />
+        <n-icon>
+          <div class="i-solar:sun-2-outline"></div>
+        </n-icon>
       </template>
     </n-switch>
   </div>
@@ -28,7 +28,6 @@
 
 <script lang="ts" setup>
 import { useAppStore } from '@/store/hooks/useAppStore'
-import { DarkModeOutlined, LightModeOutlined } from '@vicons/material'
 import { CSSProperties } from 'vue'
 
 const appStore = useAppStore()

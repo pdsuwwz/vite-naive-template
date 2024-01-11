@@ -2,7 +2,7 @@ import { RespData } from '@/utils/request'
 
 type ResponseCallback<T> = (res: RespData<T>) => (typeof res) | any
 
-export function getFilterResponse<T>(
+export function getFilterResponse<T = any>(
   res: RespData<T>,
   successCallback?: ResponseCallback<T> | null,
   errorCallback?: ResponseCallback<T> | null

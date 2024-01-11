@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import { store } from '@/store'
 import { Theme } from '@/hooks/useTheme'
 
 export const useAppStore = defineStore('app-store', () => {
@@ -17,7 +16,3 @@ export const useAppStore = defineStore('app-store', () => {
     setTheme
   }
 })
-
-export function useAppStoreWithOut() {
-  return useAppStore(store)
-}
