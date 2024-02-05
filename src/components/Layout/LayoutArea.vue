@@ -76,8 +76,7 @@ $headerHeight: 48px;
         .layout-area-menu-bar__inner {
           position: absolute;
           inset: 0;
-          overflow-x: hidden;
-          overflow-y: auto;
+          overflow: hidden auto;
           padding: 24px;
           scroll-behavior: smooth;
         }

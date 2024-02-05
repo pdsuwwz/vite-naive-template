@@ -45,8 +45,7 @@
   </LayoutArea>
 </template>
 
-<script lang="ts">
-
+<script setup lang="ts">
 import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 import NavigationNavBar from '@/components/Navigation/NavBar.vue'
 
@@ -54,83 +53,67 @@ import ProjectForm from '@/modules/Project/components/ProjectForm.vue'
 import ProjectTableHeader from '@/modules/Project/components/TableHeader.vue'
 import ProjectTableBody from '@/modules/Project/components/TableBody.vue'
 
-import { sleep } from '@/utils/request'
-
 import { useProjectStore } from '@/modules/Project/store'
 
-
-export default defineComponent({
-  name: 'ProjectList',
-  components: {
-    NavigationNavBar,
-    NavigationSideLogo,
-    ProjectTableHeader,
-    ProjectTableBody
-  },
-  setup () {
-    const { proxy } = useCurrentInstance()
-    const projectStore = useProjectStore()
-
-    const testRef = ref()
-
-    async function handleCreateProject () {
-
-      const formData = reactive({
-        name: '',
-        corpName: '',
-        notes: ''
-      })
-
-      await nextTick()
-      const dd = window.$ModalDialog.create({
-        title: '创建项目',
-        style: {
-          // top: '10vh',
-          width: '50vw'
-        },
-        closable: true,
-        maskClosable: false,
-        closeOnEsc: false,
-        content: () => h(ProjectForm, {
-          modelValue: formData,
-          ref: testRef
-        }),
-        positiveText: '创建',
-        async onPositiveClick () {
-          const isValid = await testRef.value.validateRules()
-          if (!isValid) return Promise.reject()
-
-          dd.loading = true
-          const { error, data } = await projectStore.createProject(formData)
-
-          dd.loading = false
-
-          if (error) {
-            return Promise.reject()
-          }
-
-          console.log(data!.createTime)
-
-          projectStore.getProjectList()
-        }
-      })
-    }
-
-    function handleSelectSearch (name?: string) {
-      console.log('搜索项目名: ', name)
-      projectStore.getProjectList({
-        kw: name
-      })
-    }
-    handleSelectSearch()
-
-    return {
-      handleCreateProject,
-      handleSelectSearch
-    }
-  }
+defineOptions({
+  name: 'ProjectList'
 })
 
+const { proxy } = useCurrentInstance()
+const projectStore = useProjectStore()
+
+const testRef = ref()
+
+async function handleCreateProject () {
+
+  const formData = reactive({
+    name: '',
+    corpName: '',
+    notes: ''
+  })
+
+  await nextTick()
+  const dd = window.$ModalDialog.create({
+    title: '创建项目',
+    style: {
+      // top: '10vh',
+      width: '50vw'
+    },
+    closable: true,
+    maskClosable: false,
+    closeOnEsc: false,
+    content: () => h(ProjectForm, {
+      modelValue: formData,
+      ref: testRef
+    }),
+    positiveText: '创建',
+    async onPositiveClick () {
+      const isValid = await testRef.value.validateRules()
+      if (!isValid) return Promise.reject()
+
+      dd.loading = true
+      const { error, data } = await projectStore.createProject(formData)
+
+      dd.loading = false
+
+      if (error) {
+        return Promise.reject()
+      }
+
+      console.log(data!.createTime)
+
+      projectStore.getProjectList()
+    }
+  })
+}
+
+function handleSelectSearch (name?: string) {
+  console.log('搜索项目名: ', name)
+  projectStore.getProjectList({
+    kw: name
+  })
+}
+handleSelectSearch()
 </script>
 
 <style lang="scss" scoped>
