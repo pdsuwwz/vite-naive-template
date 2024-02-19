@@ -1,1 +1,0 @@
-import{d as e,b as o,e as t,o as n}from"./index-KFmw8-T4.js";const s=t("h1",null,"NOT-FOUND 404",-1),a=[s],l=e({name:"NotFound",__name:"404",setup(_){return(c,r)=>(n(),o("div",null,a))}});export{l as default};
