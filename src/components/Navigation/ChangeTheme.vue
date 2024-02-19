@@ -64,7 +64,7 @@ const handleChange = (_theme) => {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .navigation-change-theme {
   padding-left: 12px;
 }
