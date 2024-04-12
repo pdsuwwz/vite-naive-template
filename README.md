@@ -49,16 +49,17 @@
 * 节省你配置的时间，因此该项目的**轻量化**致使你只需要专心编写自己的业务代码即可
 
 
-## Screenshot
-
-<img width="1412" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/34fd01eb-758f-43cc-b5c2-8ec77629e94c">
-<img width="1387" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/cdb35ee2-1943-4ab3-80ed-380d9cc60f51">
-
-
 ## Environment Support
 
 * Vue 3.4+
 * Node >= 16.15.x
+* **VS Code 插件 `dbaeumer.vscode-eslint` >= v3.0.5 (pre-release)**
+
+
+## Screenshot
+
+<img width="1412" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/34fd01eb-758f-43cc-b5c2-8ec77629e94c">
+<img width="1387" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/cdb35ee2-1943-4ab3-80ed-380d9cc60f51">
 
 
 ## Installation
