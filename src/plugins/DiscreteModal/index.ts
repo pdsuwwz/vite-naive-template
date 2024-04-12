@@ -1,6 +1,6 @@
 import {
-  createDiscreteApi,
   ConfigProviderProps,
+  createDiscreteApi,
   darkTheme,
   lightTheme
 } from 'naive-ui'

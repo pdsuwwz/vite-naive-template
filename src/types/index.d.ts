@@ -1,11 +1,11 @@
 import { getFilterResponse } from '@/store/utils/mixin'
 
 import {
-  requiredRules,
-  validatorRules,
   imageListRules,
+  requiredEmailRules,
   requiredRadioRules,
-  requiredEmailRules
+  requiredRules,
+  validatorRules
 } from '@/utils/formRules'
 
 

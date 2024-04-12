@@ -6,4 +6,4 @@ declare module '*.vue' {
 
   const component: DefineComponent<EmptyObject, EmptyObject, any>
   export default component
-}
+};
