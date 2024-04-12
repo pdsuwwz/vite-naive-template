@@ -89,7 +89,7 @@ async function handleCreateProject () {
     positiveText: '创建',
     async onPositiveClick () {
       const isValid = await testRef.value.validateRules()
-      if (!isValid) return Promise.reject()
+      if (!isValid) return Promise.reject(new Error(''))
 
       dd.loading = true
       const { error, data } = await projectStore.createProject(formData)
@@ -97,7 +97,7 @@ async function handleCreateProject () {
       dd.loading = false
 
       if (error) {
-        return Promise.reject()
+        return Promise.reject(new Error(''))
       }
 
       console.log(data!.createTime)

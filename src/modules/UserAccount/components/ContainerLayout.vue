@@ -87,7 +87,7 @@
 
 import { omit } from 'lodash-es'
 import { isFunction } from '@/utils/type'
-import { FormInst, lightTheme, type InputProps } from 'naive-ui'
+import { FormInst, type InputProps, lightTheme } from 'naive-ui'
 
 defineOptions({
   name: 'UserAccountContainerLayout'

@@ -3,9 +3,9 @@ import { store } from '@/store'
 
 import { sleep } from '@/utils/request'
 import {
+  getUserInfoData,
   login,
-  logout,
-  getUserInfoData
+  logout
 } from '@/modules/UserAccount/api'
 
 export interface IUserAccountState {
