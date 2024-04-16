@@ -1,6 +1,8 @@
 import path from 'path'
 import { defineConfig } from 'vitest/config'
+
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import UnoCSS from 'unocss/vite'
 import UnpluginIcons from 'unplugin-icons/vite'
@@ -33,6 +35,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       UnoCSS(),
       vue(),
+      vueJsx(),
       AutoImport({
         include: [
           /\.[tj]sx?$/,

@@ -12,9 +12,9 @@
 
 
 
-🏄‍♂️ A Starter template built on Vite 5.x + TypeScript + Vue 3.4 + Naive UI + Pinia + UnoCSS + Unplugin Auto Import.
+🏄‍♂️ A Starter template built on Vite 5.x + TypeScript + TSX + Vue 3.4 + Naive UI + Pinia + UnoCSS + Unplugin Auto Import.
 
-一个简洁的 Vite5 + Vue3.4 + TypeScript + ESLint(v9) 的 B 端后台原型 Naive UI 模板框架，内置 Pinia 模块化管理代码、路由鉴权、UnoCSS 暗黑模式、Unplugin 自动导入等, 开箱即用, 注重快速高效搭建实际业务场景, 持续更新最新技术栈 🎊
+一个简洁的 Vite5 + Vue3.4 + TypeScript + TSX + ESLint(v9) 的 B 端后台原型 Naive UI 模板框架，内置 Pinia 模块化管理代码、路由鉴权、UnoCSS 暗黑模式、Unplugin 自动导入等, 开箱即用, 注重快速高效搭建实际业务场景, 持续更新最新技术栈 🎊
 
 [🔥 Live Demo 在线体验](https://pdsuwwz.github.io/vite-naive-template)
 
@@ -33,7 +33,7 @@
 
 ## 🎉 Features
 
-* 支持 __Vite 5 + Vue 3.4 + TypeScript__
+* 支持 __Vite 5 + Vue 3.4 + TypeScript + TSX__
 * UI 框架: __Naive UI 2.x__
 * 状态管理: __Pinia__
 * 单元测试框架: __Vitest__
@@ -42,7 +42,8 @@
 * 内置 __ESlint__ 和 __Stylelint__, 可在此基础上扩充你想要的 Lint 配置规范
 * 内置封装了一个**可能比较好用的** Axios , 需要时配合 Pinia Actions 一起食用
 * 封装了 \<IconFont \/> 组件, 可直接使用 IconFont 图标
-* 服务式 service 挂载全局对象 [**window.$ModalXxxx**](https://github.com/pdsuwwz/vite-naive-template/blob/main/src/NaiveProvider.vue#L4-L7) 插件, 更方便的插件调用方式
+* 简化了 naive-ui 库中[抽屉 drawer](https://www.naiveui.com/zh-CN/os-theme/components/drawer) 的创建过程, 支持全局调用 [window.$ModalDrawer.create](./src/components/Drawer/README.md) 方法管理多个抽屉
+* 服务式 service 挂载全局对象 [**window.$ModalXxxx**](https://github.com/pdsuwwz/vite-naive-template/blob/main/src/NaiveProvider.vue#L6-L10) 插件, 更方便的插件调用方式
 * 路由鉴权已帮你封装好，同时配合 Nprogress, 只需要修改 [permission.ts](./src/router/permission.ts) 文件即可
 * 自带一个模块化的组件开发环境，可按照 modules 目录解耦页面组件、路由组件、样式等文件
 * 高度封装但不失灵活，内部抽象出了一个完整的业务流程供你参考，涉及三个核心页面：登录、列表和明细
