@@ -14,7 +14,7 @@
 
 🏄‍♂️ A Starter template built on Vite 5.x + TypeScript + Vue 3.4 + Naive UI + Pinia + UnoCSS + Unplugin Auto Import.
 
-一个简洁的 Vite5 + Vue3.4 + TypeScript 的 B 端后台原型 Naive UI 模板框架，内置 Pinia 模块化管理代码、路由鉴权、UnoCSS 暗黑模式、Unplugin 自动导入等, 开箱即用, 注重快速高效搭建实际业务场景, 持续更新最新技术栈 💪
+一个简洁的 Vite5 + Vue3.4 + TypeScript + ESLint(v9) 的 B 端后台原型 Naive UI 模板框架，内置 Pinia 模块化管理代码、路由鉴权、UnoCSS 暗黑模式、Unplugin 自动导入等, 开箱即用, 注重快速高效搭建实际业务场景, 持续更新最新技术栈 🎊
 
 [🔥 Live Demo 在线体验](https://pdsuwwz.github.io/vite-naive-template)
 
