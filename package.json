@@ -10,17 +10,17 @@
     "build": "vite build",
     "deploy:gh-pages": "cross-env VITE_ROUTER_MODE=hash pnpm build",
     "preview": "vite preview --host",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "stylelint": "stylelint .scss, .vue ./src",
     "stylelint:fix": "stylelint --fix .scss, .vue ./src"
   },
   "engines": {
-    "node": ">= 16.15.x"
+    "node": ">= 16.15.x",
+    "pnpm": ">= 8.14.x"
   },
-  "packageManager": "pnpm@8.5.1",
   "keywords": [
     "vue",
     "vue3",
