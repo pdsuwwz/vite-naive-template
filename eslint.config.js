@@ -1,7 +1,5 @@
 // import antfu from '@antfu/eslint-config'
 // export default antfu()
-// import antfu from '@antfu/eslint-config'
-// export default antfu()
 
 import globals from 'globals'
 import { defineFlatConfig } from 'eslint-define-config'
