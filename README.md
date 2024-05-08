@@ -25,10 +25,11 @@
 
 ## 🪄 使用不同的 UI 库
 
-如果更喜欢使用 [Element Plus 2](https://element-plus.org) 作为 UI 库, 这里也为你提供了一个相应的模板项目：
+如果更偏好使用 [Element Plus 2](https://element-plus.org) 作为 UI 库, 这里也为你准备了几个相应的模板项目，可在此基础上进行业务二次开发和定制：
 
-- ⚡️ [Element Plus 2 版本](https://github.com/pdsuwwz/vue-boilerplate-i18n)
+- 🍍 [Pinia + Element Plus + Vue3 + TS 版本](https://github.com/pdsuwwz/vue-boilerplate-i18n)
 
+- ⚡️ [Vuex + Element Plus + Vue3 + TS 版本](https://github.com/pdsuwwz/vite-ts-starter)
 
 
 ## 🎉 Features
@@ -51,48 +52,56 @@
 * 节省你配置的时间，因此该项目的**轻量化**致使你只需要专心编写自己的业务代码即可
 
 
-## Environment Support
+## 前置条件
 
 * Vue 3.4+
 * Node >= 16.15.x
+* Pnpm 8.x
 * **VS Code 插件 `dbaeumer.vscode-eslint` >= v3.0.5 (pre-release)**
 
 
-## Screenshot
+## 运行效果
 
 <img width="1412" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/34fd01eb-758f-43cc-b5c2-8ec77629e94c">
 <img width="1387" alt="image" src="https://github.com/pdsuwwz/vite-naive-template/assets/19891724/cdb35ee2-1943-4ab3-80ed-380d9cc60f51">
 
 
-## Installation
+## 安装和运行
 
-Install node dependencies in all packages
+* 安装依赖
 
 ```bash
-pnpm install
+pnpm i
 ```
 
-## Run
-
-Local Development
+* 本地开发
 
 ```bash
 pnpm dev
 ```
 
-## Test
+## 单元测试
 
-Unit Testing
+* 执行单测
 
 ```bash
 pnpm test
 ```
 
-Test code coverage
+* 执行覆盖率测试
 
 ```bash
 pnpm test:coverage
 ```
+
+## 💡 提示
+
+* 若 Husky 未生效，可能是由于未完成初始化，尝试执行以下命令进行初始化:
+
+```bash
+pnpm run prepare
+```
+
 
 ## 😎 Awesome
 
