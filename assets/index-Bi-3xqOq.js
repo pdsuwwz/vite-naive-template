@@ -1,1 +1,0 @@
-import{_ as r}from"./_plugin-vue_export-helper-DlAUqK2U.js";import{r as s,o as e,b as o,w as a,e as c}from"./index-C_TPAKTa.js";const p={name:"AppMain"};function _(i,m,f,l,u,d){const t=s("router-view");return e(),o(t,null,{default:a(({Component:n})=>[(e(),o(c(n)))]),_:1})}const w=r(p,[["render",_]]);export{w as default};
