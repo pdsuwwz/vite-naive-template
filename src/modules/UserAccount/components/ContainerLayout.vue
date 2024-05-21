@@ -87,7 +87,8 @@
 
 import { omit } from 'lodash-es'
 import { isFunction } from '@/utils/type'
-import { FormInst, type InputProps, lightTheme } from 'naive-ui'
+import type { FormInst } from 'naive-ui'
+import { type InputProps, lightTheme } from 'naive-ui'
 
 defineOptions({
   name: 'UserAccountContainerLayout'
@@ -188,7 +189,7 @@ defineExpose({
   border-radius: 6px;
   user-select: none;
 
-  --at-apply: bg-#fff:98%;
+  --at-apply: "bg-#fff:98%";
 
   &:deep(){
 

@@ -1,6 +1,6 @@
-import { getFilterResponse } from '@/store/utils/mixin'
+import type { getFilterResponse } from '@/store/utils/mixin'
 
-import {
+import type {
   imageListRules,
   requiredEmailRules,
   requiredRadioRules,

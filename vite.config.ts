@@ -113,6 +113,8 @@ export default defineConfig(({ mode }) => {
         vueTemplate: true
       }),
       Components({
+        directoryAsNamespace: true,
+        collapseSamePrefixes: true,
         resolvers: [
           IconsResolver({
             prefix: 'AutoIcon'

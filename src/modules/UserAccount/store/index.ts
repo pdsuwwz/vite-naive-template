@@ -36,7 +36,7 @@ export const useUserAccountStore = defineStore('UserAccount', {
       return result
     },
     async login (data) {
-      await sleep(1000)
+      await sleep(200)
       const res = await login(data)
       return this.filterResponse(res, null, () => {})
     },

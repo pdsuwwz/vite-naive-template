@@ -1,10 +1,11 @@
+import type { ConfigProviderProps } from 'naive-ui'
 import {
-  ConfigProviderProps,
   createDiscreteApi,
   darkTheme,
   lightTheme
 } from 'naive-ui'
-import { Theme, themeOverridesDark, themeOverridesLight } from '@/hooks/useTheme'
+import type { Theme } from '@/hooks/useTheme'
+import { themeOverridesDark, themeOverridesLight } from '@/hooks/useTheme'
 
 const themeRef = useStorage(
   'theme',

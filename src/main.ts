@@ -7,7 +7,6 @@ import App from '@/App.vue'
 
 import '@/assets/fonts'
 
-import GlobalComponents from '@/components'
 import Mixin from '@/mixins'
 import Plugins from '@/plugins'
 
@@ -15,7 +14,6 @@ const app = createApp(App)
 
 function setupPlugins() {
   app
-    .use(GlobalComponents)
     .use(Plugins)
     .mixin(Mixin)
 }

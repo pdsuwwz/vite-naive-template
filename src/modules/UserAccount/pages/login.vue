@@ -32,7 +32,7 @@
         </template>
       </UserAccountContainerLayout>
     </div>
-    <MyFooter />
+    <FooterCustom />
   </div>
 </template>
 
@@ -44,7 +44,7 @@ import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 
 import Cookie from 'js-cookie'
 import { useUserAccountStore } from '@/modules/UserAccount/store'
-import { FormInst, type InputProps, useMessage } from 'naive-ui'
+import type { FormInst, InputProps } from 'naive-ui'
 
 defineOptions({
   name: 'UserAccountLogin'
@@ -56,11 +56,10 @@ const userAccountStore = useUserAccountStore()
 const route = useRoute()
 const router = useRouter()
 
-const message = useMessage()
 
 const isLoading = ref(true)
 const formData = reactive({
-  email: '',
+  email: '123456@admin.com',
   password: ''
 })
 
@@ -95,8 +94,10 @@ const configLogin = computed(() => {
         },
         label: '邮箱',
         autofocus: true,
-        prefixIcon: h('div', { class: 'text-16px i-ic:baseline-mail-lock' }),
-        placeholder: '123456@admin.com'
+        prefixIcon: h('div', {
+          class: 'text-16px i-ic:baseline-mail-lock'
+        }),
+        placeholder: '随意邮箱'
       },
       {
         attrs: {
@@ -116,9 +117,11 @@ const configLogin = computed(() => {
         },
         type: 'password',
         label: '密码',
-        prefixIcon: h('div', { class: 'text-16px i-carbon:password' }),
+        prefixIcon: h('div', {
+          class: 'text-16px i-carbon:password'
+        }),
         showPasswordOn: 'click',
-        placeholder: '123456'
+        placeholder: '随意密码'
       }
     ] as Array<FormContainer.FormConfigOptions & InputProps>
   }
