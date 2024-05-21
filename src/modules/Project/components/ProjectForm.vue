@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { FormInst } from 'naive-ui'
+import type { FormInst } from 'naive-ui'
 
 export default defineComponent({
   name: 'ProjectForm',

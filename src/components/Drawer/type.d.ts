@@ -1,4 +1,4 @@
-import { DrawerCreateOptions } from './environment'
+import type { DrawerCreateOptions } from './environment'
 
 export interface DrawerInst {
   /**

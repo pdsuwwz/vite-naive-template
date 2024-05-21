@@ -1,4 +1,3 @@
-
 // const importModule = import.meta.glob('../modules/**/*.vue')
 const Layout = () => import('@/components/Layout/index.vue')
 const LayoutView = () => import('@/components/Layout/LayoutView.vue')

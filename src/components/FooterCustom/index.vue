@@ -15,7 +15,7 @@
         MIT Licensed | Copyright © 2020-PRESENT <a
           target="_blank"
           :href="link"
-          class="github-link c-#555 dark:c-#fff b-b b-b-solid b-b-[rgba(#3c3c43, 0.12)] dark:b-b-[rgba(#666, 0.12)]"
+          class="github-link c-#555 dark:c-#fff b-b b-b-solid b-b-#3c3c43:0.12 dark:b-b-#666:0.12"
         >
           Wisdom
         </a>
@@ -23,27 +23,20 @@
     </div>
   </footer>
 </template>
-<script lang="ts">
+<script lang="ts" setup>
 import Octocat from './octocat.vue'
 
-export default defineComponent({
-  name: 'MyFooter',
-  components: {
-    Octocat
-  },
-  props: {
-    showBorder: {
-      type: Boolean,
-      default: false
-    }
-  },
-  setup() {
-    const link = ref('https://github.com/pdsuwwz')
-    return {
-      link
-    }
+withDefaults(
+  defineProps<{
+    showBorder?: boolean
+  }>(),
+  {
+    showBorder: false
   }
-})
+)
+
+const link = ref('https://github.com/pdsuwwz')
+
 </script>
 <style lang="scss" scoped>
 .footer {

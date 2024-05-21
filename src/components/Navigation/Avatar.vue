@@ -17,7 +17,8 @@
 <script lang="ts">
 import Cookie from 'js-cookie'
 
-import { DropdownOption, NIcon } from 'naive-ui'
+import type { DropdownOption } from 'naive-ui'
+import { NIcon } from 'naive-ui'
 
 export default defineComponent({
   name: 'NavigationAvatar',
@@ -38,7 +39,9 @@ export default defineComponent({
         label: '退出登录',
         key: '退出按钮',
         icon: renderIcon(
-          h('div', { class: 'text-16px i-fluent:sign-out-20-regular' })
+          h('div', {
+            class: 'text-16px i-fluent:sign-out-20-regular'
+          })
         ),
         props: {
           onClick: () => {

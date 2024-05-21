@@ -28,7 +28,7 @@
 
 <script lang="ts" setup>
 import { useAppStore } from '@/store/hooks/useAppStore'
-import { CSSProperties } from 'vue'
+import type { CSSProperties } from 'vue'
 
 const appStore = useAppStore()
 const { isDark } = useTheme()

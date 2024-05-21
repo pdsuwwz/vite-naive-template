@@ -111,8 +111,12 @@ const { proxy } = useCurrentInstance()
 const isLoading = ref(false)
 const getActionIcon = computed(() => {
   return props.dataset.isPublished
-    ? h('div', { class: 'i-material-symbols:stop-circle-outline' })
-    : h('div', { class: 'i-material-symbols:play-circle-outline' })
+    ? h('div', {
+      class: 'i-material-symbols:stop-circle-outline'
+    })
+    : h('div', {
+      class: 'i-material-symbols:play-circle-outline'
+    })
 })
 
 const message = useMessage()

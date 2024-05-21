@@ -1,7 +1,5 @@
 import childrenRoutes from '@/router/child-routes'
 
-const Layout = () => import('@/components/Layout/index.vue')
-
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',

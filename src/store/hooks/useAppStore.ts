@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { Theme } from '@/hooks/useTheme'
+import type { Theme } from '@/hooks/useTheme'
 
 export const useAppStore = defineStore('app-store', () => {
   const theme = useStorage(
