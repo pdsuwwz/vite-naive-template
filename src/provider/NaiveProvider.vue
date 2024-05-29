@@ -1,6 +1,9 @@
 <script setup lang="ts">
-
-import { DrawerProvider, useDrawer } from '@/components/Drawer'
+import {
+  DrawerProvider,
+  useDrawer
+} from '@/components/Drawer'
+import { useNotifyPlacement } from './context'
 
 function registerNaiveTools () {
   window.$ModalMessage = useMessage()
@@ -12,23 +15,26 @@ function registerNaiveTools () {
 
 const NaiveProviderWrapper = defineComponent({
   name: 'NaiveProviderWrapper',
-  setup() {
+  setup(props, { slots }) {
     registerNaiveTools()
-  },
-  render() {
-    return h('div')
+    return () => h(slots.default!)
   }
 })
+
+const { notifyPlacement } = useNotifyPlacement()
 </script>
 
 <template>
   <DrawerProvider>
     <NLoadingBarProvider>
       <NDialogProvider>
-        <NNotificationProvider>
+        <NNotificationProvider
+          :placement="notifyPlacement"
+        >
           <NMessageProvider>
-            <slot></slot>
-            <NaiveProviderWrapper />
+            <NaiveProviderWrapper>
+              <slot></slot>
+            </NaiveProviderWrapper>
           </NMessageProvider>
         </NNotificationProvider>
       </NDialogProvider>

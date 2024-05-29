@@ -13,7 +13,8 @@
 </template>
 
 <script lang="ts" setup>
-import NaiveProvider from './NaiveProvider.vue'
+import NaiveProvider from './provider/NaiveProvider.vue'
+
 import { dateZhCN, zhCN } from 'naive-ui'
 
 const { theme, themeOverrides } = useTheme()
