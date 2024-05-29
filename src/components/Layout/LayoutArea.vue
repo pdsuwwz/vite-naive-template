@@ -22,7 +22,10 @@
             <div
               class="inner-content"
             >
-              <slot name="content"></slot>
+              <slot
+                v-if="isRouterAlive"
+                name="content"
+              ></slot>
             </div>
           </main>
         </section>
@@ -32,14 +35,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 
 /**
  * 上下左右布局，顶部导航 + (底部左侧侧边栏 + 底部右侧内容区域)
  */
-export default defineComponent({
-  name: 'LayoutArea'
-})
+
+const { isRouterAlive } = useRegisterForceReload()
+
+
 </script>
 
 <style lang="scss" scoped>

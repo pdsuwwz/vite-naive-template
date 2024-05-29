@@ -18,6 +18,18 @@
       <div style="flex: 1;"></div>
       <template v-if="auth">
         <NavigationSideAction />
+        <n-tooltip>
+          强制刷新路由
+          <template #trigger>
+            <div
+              class="h-full text-1.5em i-material-symbols:refresh"
+              flex="~ items-center"
+              cursor-pointer
+              @click="reloadRouterView()"
+            >
+            </div>
+          </template>
+        </n-tooltip>
         <NavigationAvatar />
       </template>
       <NavigationChangeTheme />
@@ -25,29 +37,23 @@
   </header>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import NavigationSideAction from '@/components/Navigation/Side/SideAction.vue'
 import NavigationAvatar from '@/components/Navigation/Avatar.vue'
 import NavigationChangeTheme from '@/components/Navigation/ChangeTheme.vue'
 
-export default defineComponent({
-  name: 'NavigationNavBar',
-  components: {
-    NavigationSideAction,
-    NavigationAvatar,
-    NavigationChangeTheme
+defineProps({
+  auth: {
+    type: Boolean,
+    default: true
   },
-  props: {
-    auth: {
-      type: Boolean,
-      default: true
-    },
-    fixed: {
-      type: Boolean,
-      default: true
-    }
+  fixed: {
+    type: Boolean,
+    default: true
   }
 })
+
+const { reloadRouterView } = useApplyForceReload()
 </script>
 <style lang="scss" scoped>
 $headerHeight: 48px;

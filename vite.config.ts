@@ -97,6 +97,13 @@ export default defineConfig(({ mode }) => {
               'NavigationGuard'
             ],
             type: true
+          },
+          {
+            from: 'naive-ui',
+            imports: [
+              'NotificationPlacement'
+            ],
+            type: true
           }
         ],
         resolvers:

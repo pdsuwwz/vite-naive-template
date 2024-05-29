@@ -325,6 +325,10 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "NotificationPlacement": true,
+    "reloadRouterViewInjectionKey": true,
+    "useApplyForceReload": true,
+    "useRegisterForceReload": true
   }
 }

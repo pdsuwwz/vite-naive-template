@@ -13,10 +13,8 @@ export function getFilterResponse<T = any>(
     } else {
       errorCallback
         ? errorCallback(res)
-        : setTimeout(() => {
-          window.$ModalMessage?.error(res.msg!, {
-            closable: true
-          })
+        : window.$ModalMessage?.error(res.msg!, {
+          closable: true
         })
     }
     resolve(res)

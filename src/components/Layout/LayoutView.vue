@@ -22,29 +22,15 @@
       </LayoutSection>
     </template>
     <template #content>
-      <router-view />
+      <Layout />
     </template>
   </LayoutArea>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 
 import NavigationSideGoBack from '@/components/Navigation/Side/SideGoBack.vue'
 import NavigationNavBar from '@/components/Navigation/NavBar.vue'
-
-export default defineComponent({
-  name: 'LayoutView',
-  components: {
-    NavigationNavBar,
-    NavigationSideGoBack
-  },
-  setup () {
-    const router = useRouter()
-
-    return {
-    }
-  }
-})
 
 </script>
 

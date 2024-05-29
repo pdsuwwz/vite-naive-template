@@ -63,28 +63,30 @@ const childrenRoutes: Array<RouteRecordRaw> = [
     path: '/result',
     redirect: {
       name: 'ProjectList'
-    }
-  },
-  {
-    path: '/result/:projectId',
-    component: LayoutView,
-    name: 'result',
-    redirect: {
-      name: 'ResultOverview'
     },
     children: [
       {
-        path: 'overview',
-        name: 'ResultOverview',
-        component: () => import('@/modules/Result/pages/overview.vue'),
-        meta: {
-          title: '总览'
+        path: ':projectId',
+        component: LayoutView,
+        name: 'result',
+        redirect: {
+          name: 'ResultOverview'
         },
         children: [
           {
-            path: '',
+            path: 'overview',
             name: 'ResultOverview',
-            component: () => import('@/modules/Result/pages/overview.vue')
+            component: () => import('@/modules/Result/pages/overview.vue'),
+            meta: {
+              title: '总览'
+            },
+            children: [
+              {
+                path: '',
+                name: 'ResultOverview',
+                component: () => import('@/modules/Result/pages/overview.vue')
+              }
+            ]
           }
         ]
       }
