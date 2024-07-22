@@ -1,3 +1,15 @@
+<script lang="ts">
+export default defineComponent({
+  name: 'NavigationSideGoBack',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
+})
+</script>
+
 <template>
   <div
     class="go-back-container"
@@ -17,17 +29,6 @@
   </div>
 </template>
 
-<script lang="ts">
-export default defineComponent({
-  name: 'NavigationSideGoBack',
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  }
-})
-</script>
 <style lang="scss" scoped>
 .go-back-container {
   position: relative;

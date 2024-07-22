@@ -1,41 +1,3 @@
-<template>
-  <div
-    :class="[
-      'user-account-login',
-      'light:bg-[url(@/assets/images/login-background.jpeg)]',
-      'dark:bg-[url(@/assets/images/dark-login-background.jpeg)]',
-      'dark:bg-#1e1e20',
-      'bg-no-repeat',
-      'bg-cover'
-    ]"
-  >
-    <NavigationNavBar
-      :fixed="false"
-      :auth="false"
-    >
-      <NavigationSideLogo :auth="false" />
-    </NavigationNavBar>
-    <div class="user-account-body">
-      <UserAccountContainerLayout
-        ref="refLogin"
-        v-bind="configLogin"
-        :form-data="formData"
-        @on-submit="onSubmit"
-      >
-        <template
-          #titleIcon
-        >
-          <img
-            src="@/assets/images/vite-logo.svg"
-            alt=""
-          >
-        </template>
-      </UserAccountContainerLayout>
-    </div>
-    <FooterCustom />
-  </div>
-</template>
-
 <script lang="ts" setup>
 
 import UserAccountContainerLayout from '@/modules/UserAccount/components/ContainerLayout.vue'
@@ -163,6 +125,44 @@ onMounted(() => {
 })
 
 </script>
+
+<template>
+  <div
+    :class="[
+      'user-account-login',
+      'light:bg-[url(@/assets/images/login-background.jpeg)]',
+      'dark:bg-[url(@/assets/images/dark-login-background.jpeg)]',
+      'dark:bg-#1e1e20',
+      'bg-no-repeat',
+      'bg-cover'
+    ]"
+  >
+    <NavigationNavBar
+      :fixed="false"
+      :auth="false"
+    >
+      <NavigationSideLogo :auth="false" />
+    </NavigationNavBar>
+    <div class="user-account-body">
+      <UserAccountContainerLayout
+        ref="refLogin"
+        v-bind="configLogin"
+        :form-data="formData"
+        @on-submit="onSubmit"
+      >
+        <template
+          #titleIcon
+        >
+          <img
+            src="@/assets/images/vite-logo.svg"
+            alt=""
+          >
+        </template>
+      </UserAccountContainerLayout>
+    </div>
+    <FooterCustom />
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .user-account-login {

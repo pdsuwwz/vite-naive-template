@@ -1,88 +1,3 @@
-<template>
-  <div class="user-account-container-layout">
-    <div class="form-title">
-      <div class="form-title-icon">
-        <IconFont
-          v-if="titleIcon"
-          :icon="titleIcon"
-        />
-        <slot name="titleIcon"></slot>
-      </div>
-      <p class="form-title-text">
-        {{ title }}
-      </p>
-      <p class="form-desc-text">
-        {{ desc }}
-      </p>
-    </div>
-    <NConfigProvider
-      :theme="lightTheme"
-      :theme-overrides="themeOverridesLight"
-    >
-      <n-form
-        ref="boxForm"
-        :model="formData"
-        label-placement="top"
-        :show-require-mark="false"
-        @keyup.enter="onSubmit()"
-      >
-        <template
-          v-for="(formItem, index) in formConfig"
-          :key="index"
-        >
-          <n-form-item
-            v-bind="getFormItemAttrs(formItem.attrs)"
-          >
-            <template #label>
-              <div class="form-custom-label">
-                {{ formItem.label }}
-                <n-button
-                  v-if="formItem.link"
-                  text
-                  tag="a"
-                  type="primary"
-                  tabindex="-1"
-                  @click="handleClickLink(formItem.link)"
-                >
-                  {{ formItem.link.text }}
-                </n-button>
-              </div>
-            </template>
-            <n-input
-              v-model:value="formData[formItem.attrs.path]"
-              v-bind="getInputItemAttrs(formItem)"
-            >
-              <template
-                v-if="formItem.prefixIcon"
-                #prefix
-              >
-                <n-icon>
-                  <component
-                    :is="formItem.prefixIcon"
-                  />
-                </n-icon>
-              </template>
-            </n-input>
-          </n-form-item>
-        </template>
-        <div
-          v-for="(actionItem, index) in actionList"
-          :key="`${index}-`"
-          class="submit-form-action-list"
-        >
-          <n-button
-            v-bind="actionItem.attrs"
-            class="submit-form-action-button"
-            v-on="getActionItemEvent(actionItem.on) || {}"
-          >
-            {{ actionItem.text }}
-          </n-button>
-        </div>
-      </n-form>
-    </NConfigProvider>
-  </div>
-</template>
-
 <script lang="ts" setup>
 
 import { omit } from 'lodash-es'
@@ -180,6 +95,91 @@ defineExpose({
 })
 
 </script>
+
+<template>
+  <div class="user-account-container-layout">
+    <div class="form-title">
+      <div class="form-title-icon">
+        <IconFont
+          v-if="titleIcon"
+          :icon="titleIcon"
+        />
+        <slot name="titleIcon"></slot>
+      </div>
+      <p class="form-title-text">
+        {{ title }}
+      </p>
+      <p class="form-desc-text">
+        {{ desc }}
+      </p>
+    </div>
+    <NConfigProvider
+      :theme="lightTheme"
+      :theme-overrides="themeOverridesLight"
+    >
+      <n-form
+        ref="boxForm"
+        :model="formData"
+        label-placement="top"
+        :show-require-mark="false"
+        @keyup.enter="onSubmit()"
+      >
+        <template
+          v-for="(formItem, index) in formConfig"
+          :key="index"
+        >
+          <n-form-item
+            v-bind="getFormItemAttrs(formItem.attrs)"
+          >
+            <template #label>
+              <div class="form-custom-label">
+                {{ formItem.label }}
+                <n-button
+                  v-if="formItem.link"
+                  text
+                  tag="a"
+                  type="primary"
+                  tabindex="-1"
+                  @click="handleClickLink(formItem.link)"
+                >
+                  {{ formItem.link.text }}
+                </n-button>
+              </div>
+            </template>
+            <n-input
+              v-model:value="formData[formItem.attrs.path]"
+              v-bind="getInputItemAttrs(formItem)"
+            >
+              <template
+                v-if="formItem.prefixIcon"
+                #prefix
+              >
+                <n-icon>
+                  <component
+                    :is="formItem.prefixIcon"
+                  />
+                </n-icon>
+              </template>
+            </n-input>
+          </n-form-item>
+        </template>
+        <div
+          v-for="(actionItem, index) in actionList"
+          :key="`${index}-`"
+          class="submit-form-action-list"
+        >
+          <n-button
+            v-bind="actionItem.attrs"
+            class="submit-form-action-button"
+            v-on="getActionItemEvent(actionItem.on) || {}"
+          >
+            {{ actionItem.text }}
+          </n-button>
+        </div>
+      </n-form>
+    </NConfigProvider>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .user-account-container-layout {

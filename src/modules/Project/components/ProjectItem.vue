@@ -1,80 +1,3 @@
-<template>
-  <router-link
-    :to="`/result/${dataset.id}/overview`"
-  >
-    <ul class="project-item-container bg-#fff dark:bg-#3c3c3c">
-      <li
-        style="flex: 1; min-width: 0;"
-      >
-        <div class="project-item__name">
-          <div class="project-item__name-left">
-            <IconFont
-              icon="iconfile"
-            />
-          </div>
-          <div class="project-item__name-desc">
-            <div class="project-item__name-desc__corpname">
-              <span
-                class="project-item__name-desc__corpname-maintext text_nowrap"
-              >{{ dataset.corpName }}</span>
-              <span
-                @click.prevent
-              >
-                <n-tooltip
-                  v-if="dataset.notes"
-                >
-                  {{ dataset.notes }}
-                  <template #trigger>
-                    <IconFont
-                      icon="iconhelp"
-                      class="corpname-notes"
-                    />
-                  </template>
-                </n-tooltip>
-              </span>
-            </div>
-            <p class="project-item__name-desc__fullname text_nowrap">
-              {{ dataset.name }}
-            </p>
-          </div>
-        </div>
-      </li>
-
-      <li
-        style="width: 18.5%; flex: initial;"
-        class="text_nowrap"
-      >
-        {{ dataset.createTime }}
-      </li>
-      <li
-        class="project-item-action text_nowrap"
-        :class="{
-          active: dataset.isPublished,
-          loading: isLoading
-        }"
-        @click.prevent="handlePublish(dataset.id)"
-      >
-        <span class="project-item-action__icon">
-          <n-icon
-            v-if="!isLoading"
-            :component="getActionIcon"
-            :class="{
-              'c-#666 dark:c-#eee': !dataset.isPublished
-            }"
-          />
-          <n-spin
-            v-else
-            :size="16"
-          />
-        </span>
-        <span class="project-item-action__status">
-          {{ dataset.isPublished ? '停止' : '发布' }}
-        </span>
-      </li>
-    </ul>
-  </router-link>
-</template>
-
 <script lang="ts" setup>
 
 
@@ -155,6 +78,83 @@ async function handlePublish (projectId) {
 }
 
 </script>
+
+<template>
+  <router-link
+    :to="`/result/${dataset.id}/overview`"
+  >
+    <ul class="project-item-container bg-#fff dark:bg-#3c3c3c">
+      <li
+        style="flex: 1; min-width: 0;"
+      >
+        <div class="project-item__name">
+          <div class="project-item__name-left">
+            <IconFont
+              icon="iconfile"
+            />
+          </div>
+          <div class="project-item__name-desc">
+            <div class="project-item__name-desc__corpname">
+              <span
+                class="project-item__name-desc__corpname-maintext text_nowrap"
+              >{{ dataset.corpName }}</span>
+              <span
+                @click.prevent
+              >
+                <n-tooltip
+                  v-if="dataset.notes"
+                >
+                  {{ dataset.notes }}
+                  <template #trigger>
+                    <IconFont
+                      icon="iconhelp"
+                      class="corpname-notes"
+                    />
+                  </template>
+                </n-tooltip>
+              </span>
+            </div>
+            <p class="project-item__name-desc__fullname text_nowrap">
+              {{ dataset.name }}
+            </p>
+          </div>
+        </div>
+      </li>
+
+      <li
+        style="width: 18.5%; flex: initial;"
+        class="text_nowrap"
+      >
+        {{ dataset.createTime }}
+      </li>
+      <li
+        class="project-item-action text_nowrap"
+        :class="{
+          active: dataset.isPublished,
+          loading: isLoading
+        }"
+        @click.prevent="handlePublish(dataset.id)"
+      >
+        <span class="project-item-action__icon">
+          <n-icon
+            v-if="!isLoading"
+            :component="getActionIcon"
+            :class="{
+              'c-#666 dark:c-#eee': !dataset.isPublished
+            }"
+          />
+          <n-spin
+            v-else
+            :size="16"
+          />
+        </span>
+        <span class="project-item-action__status">
+          {{ dataset.isPublished ? '停止' : '发布' }}
+        </span>
+      </li>
+    </ul>
+  </router-link>
+</template>
 
 <style lang="scss" scoped>
 $primaryColor: v-bind('themeVars.primaryColor');
