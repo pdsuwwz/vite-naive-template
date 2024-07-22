@@ -122,6 +122,9 @@ export default defineConfig(({ mode }) => {
       Components({
         directoryAsNamespace: true,
         collapseSamePrefixes: true,
+        dirs: [
+          './src/components'
+        ],
         resolvers: [
           IconsResolver({
             prefix: 'AutoIcon'

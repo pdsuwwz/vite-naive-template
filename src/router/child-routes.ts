@@ -35,7 +35,7 @@ const childrenRoutes: Array<RouteRecordRaw> = [
   },
   {
     path: '/project',
-    component: Layout,
+    component: LayoutView,
     name: 'Project',
     redirect: {
       name: 'ProjectList'
@@ -79,14 +79,7 @@ const childrenRoutes: Array<RouteRecordRaw> = [
             component: () => import('@/modules/Result/pages/overview.vue'),
             meta: {
               title: '总览'
-            },
-            children: [
-              {
-                path: '',
-                name: 'ResultOverview',
-                component: () => import('@/modules/Result/pages/overview.vue')
-              }
-            ]
+            }
           }
         ]
       }
