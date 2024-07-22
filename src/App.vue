@@ -1,17 +1,3 @@
-<template>
-  <NConfigProvider
-    class="h-full"
-    :locale="zhCN"
-    :date-locale="dateZhCN"
-    :theme="theme"
-    :theme-overrides="themeOverrides"
-  >
-    <NaiveProvider>
-      <RouterView />
-    </NaiveProvider>
-  </NConfigProvider>
-</template>
-
 <script lang="ts" setup>
 import NaiveProvider from './provider/NaiveProvider.vue'
 
@@ -26,6 +12,20 @@ defineOptions({
 const route = useRoute()
 
 </script>
+
+<template>
+  <NConfigProvider
+    class="h-full"
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme="theme"
+    :theme-overrides="themeOverrides"
+  >
+    <NaiveProvider>
+      <RouterView />
+    </NaiveProvider>
+  </NConfigProvider>
+</template>
 
 <style lang="scss">
 @use "@/styles/index.scss";

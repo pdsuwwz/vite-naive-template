@@ -1,3 +1,24 @@
+<script lang="ts">
+
+export default defineComponent({
+  name: 'NavigationSideLogo',
+  props: {
+    auth: {
+      type: Boolean,
+      default: true
+    }
+  },
+  setup () {
+
+    const title = computed(() => 'NaiveUI Template 项目')
+
+    return {
+      title
+    }
+  }
+})
+</script>
+
 <template>
   <div
     class="side-logo-container"
@@ -23,26 +44,6 @@
   </div>
 </template>
 
-<script lang="ts">
-
-export default defineComponent({
-  name: 'NavigationSideLogo',
-  props: {
-    auth: {
-      type: Boolean,
-      default: true
-    }
-  },
-  setup () {
-
-    const title = computed(() => 'NaiveUI Template 项目')
-
-    return {
-      title
-    }
-  }
-})
-</script>
 <style lang="scss" scoped>
 .side-logo-container {
   position: relative;

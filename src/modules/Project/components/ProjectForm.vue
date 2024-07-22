@@ -1,3 +1,41 @@
+<script lang="ts">
+import type { FormInst } from 'naive-ui'
+
+export default defineComponent({
+  name: 'ProjectForm',
+  props: {
+    modelValue: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
+  setup (props) {
+    const { proxy } = useCurrentInstance()
+
+    const refForm = ref<FormInst>()
+
+    const validateRules = async () => {
+      return new Promise((resolve) => {
+        refForm.value!.validate(errors => {
+          if (errors) {
+            resolve(false)
+          } else {
+            resolve(true)
+          }
+        })
+      })
+    }
+
+    return {
+      refForm,
+      validateRules
+    }
+  }
+})
+</script>
+
 <template>
   <div class="project-form-container">
     <n-form
@@ -47,44 +85,6 @@
     </n-form>
   </div>
 </template>
-
-<script lang="ts">
-import type { FormInst } from 'naive-ui'
-
-export default defineComponent({
-  name: 'ProjectForm',
-  props: {
-    modelValue: {
-      type: Object,
-      default () {
-        return {}
-      }
-    }
-  },
-  setup (props) {
-    const { proxy } = useCurrentInstance()
-
-    const refForm = ref<FormInst>()
-
-    const validateRules = async () => {
-      return new Promise((resolve) => {
-        refForm.value!.validate(errors => {
-          if (errors) {
-            resolve(false)
-          } else {
-            resolve(true)
-          }
-        })
-      })
-    }
-
-    return {
-      refForm,
-      validateRules
-    }
-  }
-})
-</script>
 
 <style lang="scss" scoped>
 .project-form-container {

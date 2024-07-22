@@ -1,8 +1,62 @@
+<script lang="ts" setup>
+
+const props = defineProps({
+  icon: {
+    type: String,
+    default: ''
+  },
+  shadow: {
+    type: Boolean,
+    default: false
+  },
+  verticalCenter: {
+    type: Boolean,
+    default: false
+  },
+  cursor: {
+    type: Boolean,
+    default: false
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const emit = defineEmits(['click'])
+
+const getClassNames = computed(() => {
+  const classNames: string[] = []
+  if (props.verticalCenter) {
+    classNames.push('middle')
+  }
+  if (props.cursor) {
+    classNames.push('cursor')
+  }
+  if (props.disabled) {
+    classNames.push('disabled')
+  }
+  return classNames
+})
+
+const handleClick = () => {
+  !props.disabled && emit('click')
+}
+
+const getAttrs = () => {
+  const attrs: any = {}
+  props.shadow &&
+      (attrs.filter = 'url(#drop-shadow)')
+  return attrs
+}
+
+</script>
+
 <template>
   <svg
     class="icon-font"
     aria-hidden="true"
-    :class="getClassName"
+    :class="getClassNames"
     @click="handleClick()"
   >
     <filter
@@ -36,68 +90,6 @@
     </g>
   </svg>
 </template>
-
-<script lang="ts">
-
-export default defineComponent({
-  name: 'IconFont',
-  props: {
-    icon: {
-      type: String,
-      default: ''
-    },
-    shadow: {
-      type: Boolean,
-      default: false
-    },
-    verticalCenter: {
-      type: Boolean,
-      default: false
-    },
-    cursor: {
-      type: Boolean,
-      default: false
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  emits: ['click'],
-  setup (props, { emit }) {
-    const getClassName = computed(() => {
-      const className: string[] = []
-      if (props.verticalCenter) {
-        className.push('middle')
-      }
-      if (props.cursor) {
-        className.push('cursor')
-      }
-      if (props.disabled) {
-        className.push('disabled')
-      }
-      return className
-    })
-
-    const handleClick = () => {
-      !props.disabled && emit('click')
-    }
-
-    const getAttrs = () => {
-      const attrs: any = {}
-      props.shadow &&
-      (attrs.filter = 'url(#drop-shadow)')
-      return attrs
-    }
-    return {
-      getClassName,
-
-      handleClick,
-      getAttrs
-    }
-  }
-})
-</script>
 
 <style lang="scss" scoped>
 .icon-font {
