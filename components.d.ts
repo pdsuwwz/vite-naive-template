@@ -19,6 +19,7 @@ declare module 'vue' {
     NavigationAvatar: typeof import('./src/components/Navigation/Avatar.vue')['default']
     NavigationChangeTheme: typeof import('./src/components/Navigation/ChangeTheme.vue')['default']
     NavigationNavBar: typeof import('./src/components/Navigation/NavBar.vue')['default']
+    NavigationRefresh: typeof import('./src/components/Navigation/Refresh.vue')['default']
     NavigationSideAction: typeof import('./src/components/Navigation/Side/SideAction.vue')['default']
     NavigationSideGoBack: typeof import('./src/components/Navigation/Side/SideGoBack.vue')['default']
     NavigationSideLogo: typeof import('./src/components/Navigation/Side/SideLogo.vue')['default']

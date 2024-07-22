@@ -1,50 +1,3 @@
-<template>
-  <LayoutArea>
-    <template #top>
-      <NavigationNavBar
-        :fixed="false"
-      >
-        <NavigationSideLogo />
-      </NavigationNavBar>
-    </template>
-
-    <template #side>
-      <LayoutSection title="项目管理">
-        <n-button
-          type="primary"
-          class="create-action"
-          @click="handleCreateProject()"
-        >
-          <template #icon>
-            <n-icon>
-              <div class="i-material-symbols:new-window-sharp"></div>
-            </n-icon>
-          </template>
-          创建项目
-        </n-button>
-      </LayoutSection>
-    </template>
-
-    <template #content>
-      <LayoutSection
-        has-divider
-        flex-content
-      >
-        <template #head>
-          <n-date-picker type="datetimerange">
-            <template #footer>
-              extra footer
-            </template>
-          </n-date-picker>
-        </template>
-
-        <ProjectTableHeader />
-        <ProjectTableBody />
-      </LayoutSection>
-    </template>
-  </LayoutArea>
-</template>
-
 <script setup lang="ts">
 import NavigationSideLogo from '@/components/Navigation/Side/SideLogo.vue'
 import NavigationNavBar from '@/components/Navigation/NavBar.vue'
@@ -63,6 +16,8 @@ const { proxy } = useCurrentInstance()
 const projectStore = useProjectStore()
 
 const testRef = ref()
+
+const testDateTime = ref()
 
 async function handleCreateProject () {
 
@@ -115,6 +70,54 @@ function handleSelectSearch (name?: string) {
 }
 handleSelectSearch()
 </script>
+
+<template>
+  <div
+    w-full
+    h-full
+    flex="~"
+  >
+    <LayoutSection
+      title="项目管理"
+      class="w-256px p-24px b-r b-r-solid b-r-#e1e1e1"
+    >
+      <n-button
+        type="primary"
+        class="create-action"
+        @click="handleCreateProject()"
+      >
+        <template #icon>
+          <n-icon>
+            <div class="i-material-symbols:new-window-sharp"></div>
+          </n-icon>
+        </template>
+        创建项目
+      </n-button>
+    </LayoutSection>
+
+    <LayoutSection
+      class="flex-1 p-24px"
+      has-divider
+      flex-content
+    >
+      <template #head>
+        <n-date-picker
+          v-model:value="testDateTime"
+          type="datetimerange"
+          start-placeholder="测试开始日期时间"
+          end-placeholder="测试结束日期时间"
+        >
+          <template #footer>
+            extra footer
+          </template>
+        </n-date-picker>
+      </template>
+
+      <ProjectTableHeader />
+      <ProjectTableBody />
+    </LayoutSection>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .create-action {

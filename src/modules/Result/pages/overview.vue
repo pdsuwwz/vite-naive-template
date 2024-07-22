@@ -1,23 +1,3 @@
-<template>
-  <LayoutSection
-    flex-content
-    :title="overviewData.title"
-  >
-    <div
-      class="h-full flex-1 b b-#dcdfe6 dark:b-#444 b-solid"
-      p="10px"
-    >
-      <n-button
-        type="primary"
-        @click="handleDrawer()"
-      >
-        测试 window.$ModalDrawer
-      </n-button>
-      {{ overviewData.content }}
-    </div>
-  </LayoutSection>
-</template>
-
 <script lang="tsx" setup>
 import { useResultStore } from '@/modules/Result/store'
 
@@ -89,7 +69,7 @@ const handleDrawer = () => {
           type='primary'
           onClick={() => inst.hide()}
         >
-        直接关闭
+          直接关闭
         </n-button>
       </n-space>
     },
@@ -108,6 +88,44 @@ const handleDrawer = () => {
 
 
 </script>
+
+<template>
+  <div
+    w-full
+    h-full
+    flex="~"
+  >
+    <LayoutSection
+      has-divider
+      title="项目详情"
+      class="w-256px p-24px b-r b-r-solid b-r-#e1e1e1"
+    >
+      <ul>
+        <li>111</li>
+        <li>222</li>
+        <li>333</li>
+      </ul>
+    </LayoutSection>
+    <LayoutSection
+      class="flex-1 p-24px"
+      flex-content
+      :title="overviewData.title"
+    >
+      <div
+        class="h-full flex-1 b b-#dcdfe6 dark:b-#444 b-solid"
+        p="10px"
+      >
+        <n-button
+          type="primary"
+          @click="handleDrawer()"
+        >
+          测试 window.$ModalDrawer
+        </n-button>
+        {{ overviewData.content }}
+      </div>
+    </LayoutSection>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 .wrap-result-overview-content {

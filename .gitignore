@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+.vite
 
 # testing
 /coverage
@@ -27,3 +28,5 @@ yarn-error.log*
 # auto-imports.d.ts
 # components.d.ts
 # .eslintrc-auto-import.json
+
+vite.config.ts.timestamp*

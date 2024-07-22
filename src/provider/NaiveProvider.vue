@@ -17,7 +17,11 @@ const NaiveProviderWrapper = defineComponent({
   name: 'NaiveProviderWrapper',
   setup(props, { slots }) {
     registerNaiveTools()
-    return () => h(slots.default!)
+    return () => h('div', {
+      class: 'h-vh w-vw'
+    }, {
+      default: slots.default!
+    })
   }
 })
 

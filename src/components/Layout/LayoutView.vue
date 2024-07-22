@@ -1,38 +1,40 @@
+<script lang="ts" setup>
+
+const { isRouterAlive } = useRegisterForceReload()
+
+
+watch(
+  () => isRouterAlive.value,
+  () => {
+    console.log('isRouterAlive', isRouterAlive.value)
+  },
+  {
+    immediate: true
+  }
+)
+
+</script>
+
 <template>
   <LayoutArea>
     <template #top>
       <NavigationNavBar
         :fixed="false"
       >
+        <NavigationSideLogo
+          v-if="$route.name === 'ProjectList'"
+        />
         <NavigationSideGoBack
+          v-else
           title="返回"
         />
       </NavigationNavBar>
     </template>
-    <template #side>
-      <LayoutSection
-        has-divider
-        title="项目详情"
-      >
-        <ul>
-          <li>111</li>
-          <li>222</li>
-          <li>333</li>
-        </ul>
-      </LayoutSection>
-    </template>
     <template #content>
-      <Layout />
+      <Layout v-if="isRouterAlive" />
     </template>
   </LayoutArea>
 </template>
-
-<script lang="ts" setup>
-
-import NavigationSideGoBack from '@/components/Navigation/Side/SideGoBack.vue'
-import NavigationNavBar from '@/components/Navigation/NavBar.vue'
-
-</script>
 
 <style lang="scss" scoped>
 </style>

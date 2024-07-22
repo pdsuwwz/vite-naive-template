@@ -13,6 +13,7 @@
     "InjectionKey": true,
     "LocationQuery": true,
     "NavigationGuard": true,
+    "NotificationPlacement": true,
     "PropType": true,
     "Ref": true,
     "RouteLocationNormalizedLoaded": true,
@@ -111,6 +112,7 @@
     "refDefault": true,
     "refThrottled": true,
     "refWithControl": true,
+    "reloadRouterViewInjectionKey": true,
     "render": true,
     "resolveComponent": true,
     "resolveRef": true,
@@ -144,6 +146,7 @@
     "until": true,
     "useActiveElement": true,
     "useAnimate": true,
+    "useApplyForceReload": true,
     "useArrayDifference": true,
     "useArrayEvery": true,
     "useArrayFilter": true,
@@ -257,6 +260,7 @@
     "usePrevious": true,
     "useRafFn": true,
     "useRefHistory": true,
+    "useRegisterForceReload": true,
     "useResizeObserver": true,
     "useRoute": true,
     "useRouter": true,
@@ -325,10 +329,6 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true,
-    "NotificationPlacement": true,
-    "reloadRouterViewInjectionKey": true,
-    "useApplyForceReload": true,
-    "useRegisterForceReload": true
+    "whenever": true
   }
 }

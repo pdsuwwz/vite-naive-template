@@ -1,6 +1,19 @@
+<script lang="ts" setup>
+
+/**
+ * 上下左右布局，顶部导航 + (底部左侧侧边栏 + 底部右侧内容区域)
+ */
+
+</script>
+
 <template>
-  <div class="layout-area-container bg-#f0f2f5 dark:bg-#1e1e20">
-    <div class="layout-area-container__top">
+  <div
+    class="layout-area-container bg-#f0f2f5 dark:bg-#1e1e20"
+  >
+    <div
+      v-if="$slots.top"
+      class="layout-area-container__top"
+    >
       <slot name="top"></slot>
     </div>
     <div class="layout-area-container__bottom">
@@ -19,14 +32,9 @@
         </aside>
         <section class="content-section-container bg-#f0f2f5 dark:bg-#1e1e20">
           <main class="main-content-box">
-            <div
-              class="inner-content"
-            >
-              <slot
-                v-if="isRouterAlive"
-                name="content"
-              ></slot>
-            </div>
+            <slot
+              name="content"
+            ></slot>
           </main>
         </section>
       </div>
@@ -34,17 +42,6 @@
     <FooterCustom show-border />
   </div>
 </template>
-
-<script lang="ts" setup>
-
-/**
- * 上下左右布局，顶部导航 + (底部左侧侧边栏 + 底部右侧内容区域)
- */
-
-const { isRouterAlive } = useRegisterForceReload()
-
-
-</script>
 
 <style lang="scss" scoped>
 $headerHeight: 48px;
@@ -95,14 +92,6 @@ $headerHeight: 48px;
         .main-content-box {
           flex: auto;
           position: relative;
-
-          .inner-content {
-            padding: 24px;
-            position: absolute;
-            inset: 0;
-            overflow: auto;
-            scroll-behavior: smooth;
-          }
         }
       }
     }
