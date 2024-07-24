@@ -1,31 +1,14 @@
 import type { getFilterResponse } from '@/store/utils/mixin'
 
-import type {
-  imageListRules,
-  requiredEmailRules,
-  requiredRadioRules,
-  requiredRules,
-  validatorRules
-} from '@/utils/formRules'
-
+import type { AxiosRequestConfig } from 'axios'
 
 declare module 'vue' {
-  export interface VNode {
-    destroy?: any
-  }
-
   /**
-   * Costom Instance.
-   * proxy._t
    *
    */
   interface ComponentCustomProperties extends Window {
-    _t: (str: string) => string
-    getValidatorRules: (...args: any[]) => ReturnType<typeof validatorRules>
-    getRequiredRules: (...args: any[]) => ReturnType<typeof requiredRules>
-    getRequiredRadioRules: (...args: any[]) => ReturnType<typeof requiredRadioRules>
-    getRequiredEmailRules: (...args: any[]) => ReturnType<typeof requiredEmailRules>
-    getImageListRules: (...args: any[]) => ReturnType<typeof imageListRules>
+    // ...
+
   }
 }
 
@@ -36,55 +19,58 @@ declare module 'axios' {
   export interface AxiosRequestConfig {
     redirect?: string
     /**
-     * 默认需要驼峰转译, 默认为 true
+     * 是否触发浏览器下载弹框，默认会触发（仅限 blob type）
      */
-    needCamelCase?: boolean
+    autoDownLoadFile?: boolean
   }
 }
 
 declare module 'pinia' {
-  /**
-   * Costom Pinia Field.
-   */
   export interface PiniaCustomProperties {
     filterResponse: typeof getFilterResponse
   }
 }
 
 declare module 'vue-router' {
-  // export interface RouteRecordRaw {
-  //   icon?: 'string'
-  // }
   export interface RouteMeta {
     title?: string
   }
 }
 
 declare global {
-  interface RenderComponent {
-    data?: any
-    component?: any
-  }
-  type ComponentOriginOptions = {
-    title: string
-    headerDescText?: string
-    headerIcon?: string
-    confirmText?: string
-    maxHeight?: number | string | 'auto'
-    dialogWidth?: string | '500px'
-    disabledConfirmButton?: boolean | false
-    hideFooter?: boolean | false
-    renderComponent: RenderComponent
-    onConfirm?: (instance: any, context: any) => Promise<any>
-    // onCancel?: (instance: Ref<null>, context: ComponentInternalInstance) => Promise<any>
+
+  /**
+   * `error`: Response Status Code.
+   *
+   * `data`: Response Body.
+   *
+   * `msg`: Response Message.
+   */
+  export interface IRequestData<T> {
+    error: number
+    data: T
+    msg: string
   }
 
-  type Mutable = {
-    -readonly [K in keyof DialogProps]: DialogProps[K]
+
+  /**
+   * General Object Types.
+   */
+  type ObjectValueSuite<T = any> = { [key in any]: T }
+
+  interface IRequestSuite {
+    get<T = any>(uri: string, params?: ObjectValueSuite, config?: AxiosRequestConfig): Promise<IRequestData<T>>
+    post<T = any>(uri: string, data?: any, config?: AxiosRequestConfig): Promise<IRequestData<T>>
+    put<T = any>(uri: string, data?: any, config?: AxiosRequestConfig): Promise<IRequestData<T>>
+    patch<T = any>(uri: string, data?: any, config?: AxiosRequestConfig): Promise<IRequestData<T>>
+    delete<T = any>(uri: string, config?: AxiosRequestConfig): Promise<IRequestData<T>>
   }
 
-  type PropsOptionsUnion = ComponentOriginOptions | Mutable
-  type PropsOptionsMixed = Partial<ComponentOriginOptions & Mutable>
+
+  /**
+   * Store FilterResponse Callback Type.
+   */
+  type IStoreFilterCallBack<T> = (res: IRequestData<T>) => Promise<IRequestData<T>> | void
 
 }
 export { }

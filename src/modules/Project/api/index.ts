@@ -1,48 +1,27 @@
 import request from '@/utils/request'
 
 export function getProjectList (params) {
-  return request({
-    url: '/project/list',
-    method: 'get',
-    params
-  })
+  return request.get('/project/list', params)
 }
 
 export function getProjectDetail (params) {
-  return request({
-    url: '/project',
-    method: 'get',
-    params
-  })
+  return request.get('/project', params)
 }
 
 export function createProject (data) {
-  return request({
-    url: '/project',
-    method: 'post',
-    data
-  })
+  return request.post('/project', data)
 }
 
 export function updateDemoTest (data) {
-  return request({
-    url: `/api/demo_test/${ data.demoId }`,
-    method: 'put',
-    data
-  })
+  return request.put(`/demo_test/${ data.demoId }`, data)
 }
 
 export function deleteDemoTest (demoId) {
-  return request({
-    url: `/api/demo_test/${ demoId }`,
-    method: 'delete'
-  })
+  return request.delete(`/demo_test/${ demoId }`)
 }
 
 export function updateTogglePublishStatus (params) {
-  return request({
-    url: '/project/toggle_status',
-    method: 'get',
+  return request.put(`/project/toggle_status`, null, {
     params
   })
 }

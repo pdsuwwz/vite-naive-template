@@ -6,13 +6,10 @@ import ProjectForm from '@/modules/Project/components/ProjectForm.vue'
 import ProjectTableHeader from '@/modules/Project/components/TableHeader.vue'
 import ProjectTableBody from '@/modules/Project/components/TableBody.vue'
 
-import { useProjectStore } from '@/modules/Project/store'
-
 defineOptions({
   name: 'ProjectList'
 })
 
-const { proxy } = useCurrentInstance()
 const projectStore = useProjectStore()
 
 const testRef = ref()

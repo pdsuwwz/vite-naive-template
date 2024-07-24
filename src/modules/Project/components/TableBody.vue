@@ -1,21 +1,8 @@
-<script lang="ts">
-import { useProjectStore } from '@/modules/Project/store'
-
+<script lang="ts" setup>
 import ProjectItem from '@/modules/Project/components/ProjectItem.vue'
 
-export default defineComponent({
-  name: 'ProjectTableBody',
-  components: {
-    ProjectItem
-  },
-  setup () {
-    const projectStore = useProjectStore()
-    const projectList = computed(() => projectStore.projectList)
-    return {
-      projectList
-    }
-  }
-})
+const projectStore = useProjectStore()
+const projectList = computed(() => projectStore.projectList)
 </script>
 
 <template>

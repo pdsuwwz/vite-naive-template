@@ -1,33 +1,17 @@
 import request from '@/utils/request'
 
 export function getDemoTestList (params) {
-  return request({
-    url: '/api/demo_test/list',
-    method: 'get',
-    params
-    // redirect: '404'
-  })
+  return request.get('/demo_test/list', params)
 }
 
 export function createDemoTest (data) {
-  return request({
-    url: '/api/demo_test',
-    method: 'post',
-    data
-  })
+  return request.post('/demo_test', data)
 }
 
 export function updateDemoTest (data) {
-  return request({
-    url: `/api/demo_test/${ data.demoId }`,
-    method: 'put',
-    data
-  })
+  return request.put(`/demo_test/${ data.demoId }`, data)
 }
 
 export function deleteDemoTest (demoId) {
-  return request({
-    url: `/api/demo_test/${ demoId }`,
-    method: 'delete'
-  })
+  return request.delete(`/demo_test/${ demoId }`)
 }
