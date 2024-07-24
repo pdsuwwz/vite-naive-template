@@ -1,84 +1,52 @@
 import type { AxiosInstance } from 'axios'
 import axios from 'axios'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 
-import { camelizeKeys, decamelizeKeys } from '@/utils/camelCase'
 import { useOutsideRouter } from '@/store/hooks/useOutsideRouter'
 
 
 // redirect error
-function errorRedirect (url: string) {
+function errorRedirect(url: string) {
   const { router } = useOutsideRouter()
   router.push(url)
 }
-
-export interface RespData<T> {
-  success?: boolean
-  errorCode?: number
-  error?: number | string | null
-  msg?: string
-  data?: T
-  [key: string]: any
-}
-
 // code Message
-export const codeMessage: any = {
-  // 200: '服务器成功返回请求的数据。',
-  200: 'The server successfully returned the requested data.',
-  // 201: '新建或修改数据成功。',
-  201: 'Create or modify data successfully.',
-  // 202: '一个请求已经进入后台排队（异步任务）。',
-  202: 'A request has entered the background queue (asynchronous task).',
-  // 204: '删除数据成功。',
-  204: 'Data deleted successfully.',
-  // 206: '进行范围请求成功。',
-  206: 'Successful range request.',
-  // 400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
-  400: 'Bad error request, and the server did not create or modify the data.',
-  // 401: '用户没有权限（令牌、用户名、密码错误）。',
-  401: 'User does not have permission (invalid username, password, security token).',
-  // 403: '用户得到授权，但是访问是被禁止的。',
-  403: 'User is authorized, but access is forbidden.',
-  // 404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',
-  404: 'The request sent is for a record that does not exist, and the server does not operate.',
-  // 405: '请求不允许。',
-  405: 'Request denied.',
-  // 406: '请求的格式不可得。',
-  406: 'Requested format not available.',
-  // 410: '请求的资源被永久删除，且不会再得到的。',
-  410: 'The requested resource is permanently deleted and will no longer be available.',
-  // 422: '当创建一个对象时，发生一个验证错误。',
-  422: 'When creating an object, a validation error occurrs.',
-  // 500: '服务器发生错误，请检查服务器。',
-  500: 'An error occurred in the server, please check the server.',
-  // 502: '网关错误。',
-  502: 'Bad Gateway Error.',
-  // 503: '服务不可用，服务器暂时过载或维护。',
-  503: 'The server is temporarily unable to service your request due to maintenance downtime or capacity problems.',
-  // 504: '网关超时。'
-  504: 'Gateway Timeout.'
+const codeMessage: {
+  [key: number]: string
+} = {
+  200: '服务器成功返回请求的数据。',
+  201: '新建或修改数据成功。',
+  202: '一个请求已经进入后台排队（异步任务）。',
+  204: '删除数据成功。',
+  206: '进行范围请求成功。',
+  400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
+  401: '用户没有权限（令牌、用户名、密码错误）。',
+  403: '用户得到授权，但是访问是被禁止的。',
+  404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',
+  405: '请求不允许。',
+  406: '请求的格式不可得。',
+  410: '请求的资源被永久删除，且不会再得到的。',
+  422: '当创建一个对象时，发生一个验证错误。',
+  500: '服务器发生错误，请检查服务器。',
+  502: '网关错误。',
+  503: '服务不可用，服务器暂时过载或维护。',
+  504: '网关超时。'
 }
 
-// Instance for axios
+// 创建axios实例
 const service: AxiosInstance = axios.create({
-  // API from the environment variable
+  // api 的 base_url
   baseURL: import.meta.env.VITE_BASE_API,
-  timeout: 15000
+  // 请求超时时间
+  timeout: 6000000
 })
 
 // request拦截器
 service.interceptors.request.use(
   request => {
-    const token = Cookie.get('token')
+    const token: string | undefined = Cookies.get('token')
 
     // Conversion of hump nomenclature
-    if (
-      !(request.data instanceof FormData)
-    ) {
-      request.data = decamelizeKeys(request.data)
-    }
-
-    request.params = decamelizeKeys(request.params)
 
     /**
      * 让每个请求携带自定义 token
@@ -87,9 +55,9 @@ service.interceptors.request.use(
     if (request.url === '/login') {
       return request
     }
-
-    request.headers.Authorization = token
-
+    request.headers!.Authorization = token as string
+    // TODO: 临时使用
+    request.headers['ngrok-skip-browser-warning'] = '69420'
     return request
   },
   error => {
@@ -109,23 +77,34 @@ service.interceptors.response.use(
      *  }
      */
 
-    const data = response.data
-    Promise.resolve().then(() => {
-      useResHeadersAPI(response.headers, data)
-    })
+    const data: any = response.data
+    const msg: string = data.msg || ''
+    if (msg.indexOf('user not log in') !== -1 && data.error === -1) {
+      // TODO 写死的  之后要根据语言跳转
+      errorRedirect('login')
+      return
+    }
+    if (response.config.autoDownLoadFile === undefined || response.config.autoDownLoadFile) {
+      Promise.resolve().then(() => {
+        useResHeadersAPI(response.headers, data)
+      })
+    }
 
     if (
       response.request.responseType === 'blob' &&
-      /json$/gi.test(response.headers['content-type'])
+  /json$/gi.test(response.headers['content-type'])
     ) {
       return new Promise(resolve => {
         const reader = new FileReader()
+        reader.readAsText(<Blob>response.data)
+
         reader.onload = () => {
-          response.data = JSON.parse(reader.result as string)
-          resolve(camelizeKeys(response.data))
+          if (!reader.result || typeof reader.result !== 'string') return resolve(response.data)
+
+          response.data = JSON.parse(reader.result)
+          resolve(response.data)
         }
 
-        reader.readAsText(response.data)
       })
     } else if (data instanceof Blob) {
       return {
@@ -135,7 +114,10 @@ service.interceptors.response.use(
       }
     }
 
-    return camelizeKeys(data)
+    if (data.msg === null) {
+      data.msg = 'Unknown error'
+    }
+    return data
   },
   error => {
     /**
@@ -166,7 +148,7 @@ service.interceptors.response.use(
   }
 )
 
-export function sleep (time = 0) {
+export function sleep(time = 0) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({})
@@ -174,7 +156,7 @@ export function sleep (time = 0) {
   })
 }
 
-function extractFileNameFromContentDispositionHeader (value: string) {
+function extractFileNameFromContentDispositionHeader(value: string) {
   const patterns = [
     /filename\*=[^']+'\w*'"([^"]+)";?/i,
     /filename\*=[^']+'\w*'([^;]+);?/i,
@@ -182,11 +164,12 @@ function extractFileNameFromContentDispositionHeader (value: string) {
     /filename=([^;]*);?/i
   ]
 
-  let responseFilename: any
+  let responseFilename: any = null
   patterns.some(regex => {
     responseFilename = regex.exec(value)
     return responseFilename !== null
   })
+
   if (responseFilename !== null && responseFilename.length > 1) {
     try {
       return decodeURIComponent(responseFilename[1])
@@ -198,8 +181,7 @@ function extractFileNameFromContentDispositionHeader (value: string) {
   return null
 }
 
-export function downloadFile (boldData: any, filename = 'test-filename', type: string) {
-  // TODO: https://blog.csdn.net/weixin_42142057/article/details/97655591
+export function downloadFile(boldData: BlobPart, filename = 'shinewing', type: any) {
   const blob = boldData instanceof Blob
     ? boldData
     : new Blob([boldData], {
@@ -218,20 +200,35 @@ export function downloadFile (boldData: any, filename = 'test-filename', type: s
   document.body.removeChild(link)
 }
 
-export function useResHeadersAPI (headers: any, resData: any) {
+export function useResHeadersAPI(headers: any, resData: any) {
   const disposition = headers['content-disposition']
   if (disposition) {
-    let filename: any = ''
-    /**
-     * TODO: See
-     * https://stackoverflow.com/a/40940790/13202554
-     *
-     * https://github.com/swagger-api/swagger-ui/blob/master/src/core/components/response-body.jsx#L80
-     */
+    let filename: string | null = ''
 
     filename = extractFileNameFromContentDispositionHeader(disposition)
     filename && downloadFile(resData, filename, headers['content-type'])
   }
 }
 
-export default service
+const requestSuite: IRequestSuite = {
+  get(uri, params, config) {
+    return service.get(uri, {
+      params,
+      ...config
+    })
+  },
+  post(uri, data, config) {
+    return service.post(uri, data, config)
+  },
+  put(uri, data, config) {
+    return service.put(uri, data, config)
+  },
+  patch(uri, data, config) {
+    return service.patch(uri, data, config)
+  },
+  delete(uri, config) {
+    return service.delete(uri, config)
+  }
+}
+
+export default requestSuite

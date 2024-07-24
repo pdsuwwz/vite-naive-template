@@ -329,6 +329,10 @@
     "watchThrottled": true,
     "watchTriggerable": true,
     "watchWithFilter": true,
-    "whenever": true
+    "whenever": true,
+    "useProjectStore": true,
+    "useResultStore": true,
+    "useUserAccountStore": true,
+    "useUserAccountStoreWithOut": true
   }
 }

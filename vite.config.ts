@@ -31,6 +31,15 @@ export default defineConfig(({ mode }) => {
       : '/',
     server: {
       port: 4567
+      // According to the need to open proxy
+      // proxy: {
+      //   '/api': {
+      //     target: 'http://172.xx.xxx.xx/xxxxxxx/api',
+      //     changeOrigin: true,
+      //     ws: true,
+      //     rewrite: (path) => path.replace(/^\/api/, '')
+      //   }
+      // }
     },
     plugins: [
       UnoCSS(),
@@ -111,7 +120,8 @@ export default defineConfig(({ mode }) => {
             ? []
             : [NaiveUiResolver()],
         dirs: [
-          './src/hooks'
+          './src/hooks',
+          './src/modules/**/store'
         ],
         dts: './auto-imports.d.ts',
         eslintrc: {
@@ -155,16 +165,6 @@ export default defineConfig(({ mode }) => {
         'debugger'
       ]
     },
-    // According to the need to open proxy
-    // server: {
-    //   proxy: {
-    //     '/api': {
-    //       target: 'http://172.xx.xxx.xx/xxxxxxx/api',
-    //       changeOrigin: true,
-    //       rewrite: (path) => path.replace(/^\/api/, '')
-    //     }
-    //   }
-    // },
     resolve: {
       alias: [
         {
