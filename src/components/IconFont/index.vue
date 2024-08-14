@@ -40,13 +40,16 @@ const getClassNames = computed(() => {
 })
 
 const handleClick = () => {
-  !props.disabled && emit('click')
+  if (!props.disabled) {
+    emit('click')
+  }
 }
 
 const getAttrs = () => {
   const attrs: any = {}
-  props.shadow &&
-      (attrs.filter = 'url(#drop-shadow)')
+  if (props.shadow) {
+    attrs.filter = 'url(#drop-shadow)'
+  }
   return attrs
 }
 
