@@ -16,14 +16,14 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.15.x
+          node-version: 18.12.x
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 8
+          version: 9
 
       - name: Install dependencies
         run: pnpm install
