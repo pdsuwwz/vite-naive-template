@@ -4,6 +4,14 @@ import Cookies from 'js-cookie'
 
 import { useOutsideRouter } from '@/store/hooks/useOutsideRouter'
 
+export interface RespData<T> {
+  success?: boolean
+  errorCode?: number
+  error?: number | string | null
+  msg?: string
+  data?: T
+  [key: string]: any
+}
 
 // redirect error
 function errorRedirect(url: string) {
@@ -206,7 +214,9 @@ export function useResHeadersAPI(headers: any, resData: any) {
     let filename: string | null = ''
 
     filename = extractFileNameFromContentDispositionHeader(disposition)
-    filename && downloadFile(resData, filename, headers['content-type'])
+    if (filename) {
+      downloadFile(resData, filename, headers['content-type'])
+    }
   }
 }
 

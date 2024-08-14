@@ -20,6 +20,7 @@ export function login (data) {
 }
 export function logout () {
   // return request.post('/logout')
+  return {}
 }
 
 export function getUserInfoData(params = {}) {

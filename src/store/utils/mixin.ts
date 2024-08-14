@@ -9,13 +9,15 @@ export function getFilterResponse<T = any>(
 ): Promise<RespData<T>> {
   return new Promise((resolve) => {
     if (res && res.error === 0) {
-      successCallback && successCallback(res)
+      if (successCallback) {
+        successCallback(res)
+      }
+    } else if (errorCallback) {
+      errorCallback(res)
     } else {
-      errorCallback
-        ? errorCallback(res)
-        : window.$ModalMessage?.error(res.msg!, {
-          closable: true
-        })
+      window.$ModalMessage?.error(res.msg!, {
+        closable: true
+      })
     }
     resolve(res)
   })
