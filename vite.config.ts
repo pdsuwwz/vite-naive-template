@@ -179,6 +179,7 @@ export default defineConfig(({ mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
+          api: 'modern',
           additionalData: `@use '@/styles/naive-variables.scss' as *;`
         }
       }
