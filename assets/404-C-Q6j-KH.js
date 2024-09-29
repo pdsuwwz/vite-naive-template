@@ -1,1 +1,0 @@
-import{d as n,o,c as t,a}from"./index-CXppI_uu.js";const m=n({name:"NotFound",__name:"404",setup(r){return(s,e)=>(o(),t("div",null,e[0]||(e[0]=[a("h1",null,"NOT-FOUND 404",-1)])))}});export{m as default};
