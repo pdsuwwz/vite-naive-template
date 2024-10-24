@@ -135,6 +135,11 @@ export default defineConfig(({ mode }) => {
         dirs: [
           './src/components'
         ],
+        include: [
+          /\.[tj]sx?$/,
+          /\.vue$/,
+          /\.vue\?vue/
+        ],
         resolvers: [
           IconsResolver({
             prefix: 'AutoIcon'
