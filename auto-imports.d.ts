@@ -335,6 +335,7 @@ declare global {
   export type { NotificationPlacement } from 'naive-ui'
   import('naive-ui')
 }
+
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
