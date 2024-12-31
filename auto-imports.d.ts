@@ -244,6 +244,7 @@ declare global {
   const usePreferredDark: typeof import('@vueuse/core')['usePreferredDark']
   const usePreferredLanguages: typeof import('@vueuse/core')['usePreferredLanguages']
   const usePreferredReducedMotion: typeof import('@vueuse/core')['usePreferredReducedMotion']
+  const usePreferredReducedTransparency: typeof import('@vueuse/core')['usePreferredReducedTransparency']
   const usePrevious: typeof import('@vueuse/core')['usePrevious']
   const useProjectStore: typeof import('./src/modules/Project/store/index')['useProjectStore']
   const useRafFn: typeof import('@vueuse/core')['useRafFn']
@@ -253,6 +254,7 @@ declare global {
   const useResultStore: typeof import('./src/modules/Result/store/index')['useResultStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
+  const useSSRWidth: typeof import('@vueuse/core')['useSSRWidth']
   const useScreenOrientation: typeof import('@vueuse/core')['useScreenOrientation']
   const useScreenSafeArea: typeof import('@vueuse/core')['useScreenSafeArea']
   const useScriptTag: typeof import('@vueuse/core')['useScriptTag']
@@ -334,6 +336,21 @@ declare global {
   // @ts-ignore
   export type { NotificationPlacement } from 'naive-ui'
   import('naive-ui')
+  // @ts-ignore
+  export type { ReloadRouterViewApiInjection } from './src/hooks/useForceReload'
+  import('./src/hooks/useForceReload')
+  // @ts-ignore
+  export type { Theme } from './src/hooks/useTheme'
+  import('./src/hooks/useTheme')
+  // @ts-ignore
+  export type { ProjectDetailProps, IProjectModule } from './src/modules/Project/store/index'
+  import('./src/modules/Project/store/index')
+  // @ts-ignore
+  export type { IResultModule } from './src/modules/Result/store/index'
+  import('./src/modules/Result/store/index')
+  // @ts-ignore
+  export type { IUserAccountState } from './src/modules/UserAccount/store/index'
+  import('./src/modules/UserAccount/store/index')
 }
 
 // for vue template auto import
@@ -579,6 +596,7 @@ declare module 'vue' {
     readonly usePreferredDark: UnwrapRef<typeof import('@vueuse/core')['usePreferredDark']>
     readonly usePreferredLanguages: UnwrapRef<typeof import('@vueuse/core')['usePreferredLanguages']>
     readonly usePreferredReducedMotion: UnwrapRef<typeof import('@vueuse/core')['usePreferredReducedMotion']>
+    readonly usePreferredReducedTransparency: UnwrapRef<typeof import('@vueuse/core')['usePreferredReducedTransparency']>
     readonly usePrevious: UnwrapRef<typeof import('@vueuse/core')['usePrevious']>
     readonly useProjectStore: UnwrapRef<typeof import('./src/modules/Project/store/index')['useProjectStore']>
     readonly useRafFn: UnwrapRef<typeof import('@vueuse/core')['useRafFn']>
@@ -588,6 +606,7 @@ declare module 'vue' {
     readonly useResultStore: UnwrapRef<typeof import('./src/modules/Result/store/index')['useResultStore']>
     readonly useRoute: UnwrapRef<typeof import('vue-router')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router')['useRouter']>
+    readonly useSSRWidth: UnwrapRef<typeof import('@vueuse/core')['useSSRWidth']>
     readonly useScreenOrientation: UnwrapRef<typeof import('@vueuse/core')['useScreenOrientation']>
     readonly useScreenSafeArea: UnwrapRef<typeof import('@vueuse/core')['useScreenSafeArea']>
     readonly useScriptTag: UnwrapRef<typeof import('@vueuse/core')['useScriptTag']>
