@@ -340,6 +340,14 @@
     "whenever": true,
     "DirectiveBinding": true,
     "MaybeRef": true,
-    "MaybeRefOrGetter": true
+    "MaybeRefOrGetter": true,
+    "IProjectModule": true,
+    "IResultModule": true,
+    "IUserAccountState": true,
+    "ProjectDetailProps": true,
+    "ReloadRouterViewApiInjection": true,
+    "Theme": true,
+    "usePreferredReducedTransparency": true,
+    "useSSRWidth": true
   }
 }
