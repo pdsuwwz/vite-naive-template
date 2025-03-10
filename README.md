@@ -12,7 +12,7 @@
 
 
 
-🏄‍♂️ A Starter template built on Vite 6.x + TypeScript + TSX + Vue 3.x + Naive UI + Pinia 3.x + UnoCSS + Unplugin Auto Import + Husky + lint-staged.
+🏄‍♂️ A Starter template built on Vite 6.x + TypeScript + TSX + Vue 3.x + Naive UI + Pinia 3.x + UnoCSS + Unplugin Auto Import + ESLint(v9) + Husky + lint-staged.
 
 一个简洁的 Vite6 + Vue3.x + TypeScript + TSX + ESLint(v9) 的 B 端后台原型 Naive UI 模板框架，内置 Pinia (v3) 模块化管理代码、路由鉴权、UnoCSS 暗黑模式、Unplugin 自动导入等, 开箱即用, 注重快速高效搭建实际业务场景, 持续更新最新技术栈 🎊
 
@@ -41,7 +41,7 @@
 * 代码规范化检测: __Husky + lint-staged__
 * 内置 **Unplugin Auto Import**, 支持组件按需自动导入, 解放双手
 * 内置 **UnoCSS + Iconify**, 可实现原子化样式内联、图标按需自动导入, 提升开发效率
-* 内置 __ESlint__ 和 __Stylelint__, 可在此基础上扩充你想要的 Lint 配置规范
+* 内置 __ESLint(v9)__ 和 __Stylelint__, 可在此基础上扩充你想要的 Lint 配置规范
 * 内置封装了一个**可能比较好用的** Axios , 需要时配合 Pinia Actions 一起食用
 * 封装了 \<IconFont \/> 组件, 可直接使用 IconFont 图标
 * 简化了 naive-ui 库中[抽屉 drawer](https://www.naiveui.com/zh-CN/os-theme/components/drawer) 的创建过程, 支持全局调用 [window.$ModalDrawer.create](./src/components/Drawer/README.md) 方法管理多个抽屉

@@ -49,6 +49,7 @@
     "createInjectionState": true,
     "createPinia": true,
     "createReactiveFn": true,
+    "createRef": true,
     "createReusableTemplate": true,
     "createRouter": true,
     "createSharedComposable": true,
