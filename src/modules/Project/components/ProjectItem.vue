@@ -157,7 +157,7 @@ async function handlePublish (projectId) {
 </template>
 
 <style lang="scss" scoped>
-$primaryColor: v-bind('themeVars.primaryColor');
+$successColor: v-bind('themeVars.successColorHover');
 
 .project-item-container {
   display: flex;
@@ -194,7 +194,6 @@ $primaryColor: v-bind('themeVars.primaryColor');
       & > svg {
         width: 20px;
         font-size: 20px;
-        color: $color-primary;
       }
     }
 
@@ -242,7 +241,7 @@ $primaryColor: v-bind('themeVars.primaryColor');
       font-size: 20px;
       width: 20px;
 
-      & > svg {
+      & > .n-icon {
         width: 100%;
         font-size: 20px;
       }
@@ -255,15 +254,15 @@ $primaryColor: v-bind('themeVars.primaryColor');
     }
 
     &.active {
-      color: $primaryColor;
+      color: $successColor;
     }
 
     &.loading {
-      color: $primaryColor;
+      color: $successColor;
     }
 
     &:hover {
-      color: $primaryColor;
+      color: $successColor;
     }
   }
 }
