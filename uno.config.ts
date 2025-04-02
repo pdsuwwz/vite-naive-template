@@ -2,19 +2,28 @@ import {
   defineConfig,
   presetAttributify,
   presetIcons,
-  presetUno,
+  presetWind3,
   transformerDirectives
 } from 'unocss'
 
 export default defineConfig({
   presets: [
-    presetUno(),
+    presetWind3(),
     presetAttributify(),
     presetIcons()
   ],
   transformers: [
     transformerDirectives()
   ],
+  theme: {
+    colors: {
+      primary: '#549e23',
+      success: '#52c41a',
+      warning: '#faad14',
+      danger: '#fa5555',
+      info: '#909399'
+    }
+  },
   rules: [
     [
       'navbar-shadow', {
