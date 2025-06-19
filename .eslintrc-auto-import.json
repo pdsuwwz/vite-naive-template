@@ -29,6 +29,8 @@
     "RouteParams": true,
     "RouteRecordName": true,
     "RouteRecordRaw": true,
+    "Slot": true,
+    "Slots": true,
     "Theme": true,
     "VNode": true,
     "WritableComputedRef": true,
