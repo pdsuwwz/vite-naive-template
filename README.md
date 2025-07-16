@@ -55,7 +55,7 @@
 ## 前置条件
 
 * Vue 3.5+
-* Node >= 18.12.x
+* Node >= 22.x
 * Pnpm 9.x
 * **VS Code 插件 `dbaeumer.vscode-eslint` >= v3.0.5 (pre-release)**
 

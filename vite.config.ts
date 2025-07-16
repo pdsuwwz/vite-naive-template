@@ -11,6 +11,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { loadEnv } from 'vite'
 
 const htmlPlugin = () => {
   return {
@@ -25,8 +26,10 @@ const htmlPlugin = () => {
 }
 
 export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
+
   return {
-    base: process.env.VITE_ROUTER_MODE === 'hash'
+    base: env.VITE_ROUTER_MODE === 'hash'
       ? ''
       : '/',
     server: {
@@ -179,12 +182,11 @@ export default defineConfig(({ mode }) => {
       ]
     },
     define: {
-      'process.env': process.env
+      'process.env.VITE_ROUTER_MODE': JSON.stringify(env.VITE_ROUTER_MODE)
     },
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern',
           additionalData: `@use '@/styles/naive-variables.scss' as *;`
         }
       }
